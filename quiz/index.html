@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f6f5ef">
+	<meta name="description" content="A focused science revision workspace for high school students.">
+	<title>ReziQuiz | Science revision, made clearer</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script defer src="https://unpkg.com/lucide@latest"></script>
+	<script defer src="script.js"></script>
+	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+	<div class="app-shell" x-data="reziQuiz" x-init="init()">
+		<aside class="sidebar" :class="{ 'sidebar-open': mobileMenu }">
+			<a class="brand" href="#home" @click.prevent="navigate('home')" aria-label="ReziQuiz home">
+				<span class="brand-mark"><i data-lucide="orbit"></i></span>
+				<span>rezi<span class="brand-light">quiz</span></span>
+			</a>
+			<div class="workspace-label">YOUR WORKSPACE</div>
+			<nav class="primary-nav" aria-label="Main navigation">
+				<button class="nav-link" :class="{ active: view === 'home' }" @click="navigate('home')"><i data-lucide="layout-dashboard"></i><span>Overview</span></button>
+				<button class="nav-link" :class="{ active: view === 'subjects' }" @click="navigate('subjects')"><i data-lucide="book-open"></i><span>Subjects</span><span class="nav-count">4</span></button>
+				<button class="nav-link" :class="{ active: view === 'flashcards' }" @click="openFlashcards()"><i data-lucide="layers-2"></i><span>Flashcards</span></button>
+				<button class="nav-link" :class="{ active: view === 'progress' }" @click="navigate('progress')"><i data-lucide="chart-no-axes-column-increasing"></i><span>My progress</span></button>
+			</nav>
+			<div class="sidebar-divider"></div>
+			<div class="workspace-label">SCIENCE LIBRARY</div>
+			<nav class="subject-nav" aria-label="Science subjects">
+				<template x-for="subject in subjects" :key="subject.id">
+					<button class="subject-link" @click="openSubject(subject.id)">
+						<span class="subject-dot" :style="`--subject-color:${subject.color}`"></span>
+						<span x-text="subject.name"></span>
+						<span class="subject-mini-count" x-text="subject.questions.length"></span>
+					</button>
+				</template>
+			</nav>
+			<div class="sidebar-spacer"></div>
+			<div class="sidebar-note">
+				<div class="note-icon"><i data-lucide="sparkles"></i></div>
+				<p>Small sessions add up.</p>
+				<span>Your next 10-minute review is one click away.</span>
+				<button @click="startQuiz()">Start a quick quiz <i data-lucide="arrow-up-right"></i></button>
+			</div>
+			<div class="profile-row">
+				<div class="avatar">S</div>
+				<div class="profile-copy"><strong>Student</strong><span>Science learner</span></div>
+				<span class="profile-menu" aria-hidden="true"><i data-lucide="ellipsis"></i></span>
+			</div>
+		</aside>
+
+		<main class="main-area">
+			<header class="topbar">
+				<button class="mobile-menu-button icon-button" @click="mobileMenu = !mobileMenu" aria-label="Toggle navigation"><i data-lucide="menu"></i></button>
+				<div class="breadcrumb"><span>Workspace</span><i data-lucide="chevron-right"></i><strong x-text="pageTitle"></strong></div>
+				<div class="topbar-actions">
+					<label class="search-box"><i data-lucide="search"></i><input type="search" placeholder="Search topics..." x-model="searchQuery" @keydown.enter="searchTopics()" aria-label="Search topics"><kbd>/</kbd></label>
+					<button class="icon-button notification-button" aria-label="Study streak"><i data-lucide="flame"></i><span x-text="streak"></span></button>
+					<button class="top-avatar" aria-label="Student profile">S</button>
+				</div>
+			</header>
+
+			<div class="page-content">
+				<section x-show="view === 'home'" x-cloak>
+					<div class="welcome-row">
+						<div><p class="eyebrow"><span class="live-dot"></span> YOUR SCIENCE WORKSPACE</p><h1>Ready when <em>you are.</em></h1><p class="welcome-copy">A little revision today makes exam day feel a lot lighter.</p></div>
+						<div class="date-chip"><i data-lucide="calendar-days"></i><span x-text="todayLabel"></span></div>
+					</div>
+
+					<div class="dashboard-grid">
+						<section class="continue-panel">
+							<div class="continue-top"><span class="continue-tag"><i data-lucide="play"></i> PICK UP WHERE YOU LEFT OFF</span><span class="chapter-index">01 / 04</span></div>
+							<div class="continue-body">
+								<div class="continue-copy"><span class="continue-subject">BIOLOGY <span class="tiny-line"></span> CELL BIOLOGY</span><h2>Build a stronger<br>cell foundation.</h2><p>Review organelles, membranes, and how cells keep us alive.</p>
+									<button class="button button-light" @click="openSubject('biology')">Continue studying <i data-lucide="arrow-right"></i></button>
+								</div>
+								<div class="cell-art" aria-hidden="true"><div class="cell-ring ring-one"></div><div class="cell-ring ring-two"></div><div class="cell-core"></div><span class="cell-label label-a"></span><span class="cell-label label-b"></span><span class="cell-label label-c"></span></div>
+							</div>
+							<div class="continue-footer"><span><i data-lucide="clock-3"></i> 12 min</span><span><i data-lucide="layers-2"></i> 8 concepts</span><div class="progress-track"><span style="width:35%"></span></div><small>35% complete</small></div>
+						</section>
+
+						<section class="streak-panel">
+							<div class="panel-heading"><span class="panel-icon orange-icon"><i data-lucide="flame"></i></span><span class="panel-menu"><i data-lucide="ellipsis"></i></span></div>
+							<p class="stat-label">CURRENT STREAK</p><div class="streak-number"><strong x-text="streak"></strong><span>days</span></div>
+							<p class="muted-copy">Consistency is your<br>superpower. Keep it going.</p>
+							<div class="week-row"><template x-for="(day, index) in weekDays" :key="day"><div class="week-day"><span x-text="day"></span><i :class="{ 'day-done': index < streak % 7, 'day-today': index === 4 }"></i></div></template></div>
+						</section>
+
+						<section class="subjects-section">
+							<div class="section-heading"><div><p class="eyebrow">YOUR REVISION, YOUR PACE</p><h2>Explore subjects</h2></div><button class="text-button" @click="navigate('subjects')">View all subjects <i data-lucide="arrow-right"></i></button></div>
+							<div class="subject-grid">
+								<template x-for="subject in subjects" :key="subject.id">
+									<button class="subject-card" @click="openSubject(subject.id)" :style="`--subject-color:${subject.color};--subject-wash:${subject.wash}`">
+										<div class="subject-card-top"><span class="subject-symbol" x-html="subject.symbol"></span><i data-lucide="arrow-up-right"></i></div>
+										<span class="subject-category" x-text="subject.category"></span><strong x-text="subject.name"></strong>
+										<span class="subject-card-bottom"><span x-text="subject.topics.length + ' topics'"></span><span class="tiny-progress"><span :style="`width:${subjectProgress(subject.id)}%`"></span></span></span>
+									</button>
+								</template>
+							</div>
+						</section>
+
+						<section class="quick-panel">
+							<div class="section-heading compact-heading"><div><p class="eyebrow">MAKE IT STICK</p><h2>Quick practice</h2></div><span class="sparkle-mini"><i data-lucide="sparkles"></i></span></div>
+							<div class="practice-options">
+								<button class="practice-option" @click="startQuiz()"><span class="practice-icon quiz-icon"><i data-lucide="circle-help"></i></span><span><strong>Take a quick quiz</strong><small>10 questions · mixed science</small></span><i class="option-arrow" data-lucide="arrow-right"></i></button>
+								<button class="practice-option" @click="openFlashcards()"><span class="practice-icon cards-icon"><i data-lucide="layers-2"></i></span><span><strong>Review flashcards</strong><small><span x-text="dueCards"></span> concepts ready to revisit</small></span><i class="option-arrow" data-lucide="arrow-right"></i></button>
+							</div>
+							<div class="tip-strip"><i data-lucide="lightbulb"></i><span><strong>Study tip</strong> Try explaining a concept in your own words before checking the answer.</span></div>
+						</section>
+					</div>
+				</section>
+
+				<section x-show="view === 'subjects'" x-cloak>
+					<div class="page-heading"><p class="eyebrow">THE SCIENCE LIBRARY</p><h1>All your subjects.</h1><p>Choose a subject to explore topics, test your knowledge, and build confidence.</p></div>
+					<div class="subject-library-grid"><template x-for="subject in filteredSubjects" :key="subject.id"><article class="library-card" :style="`--subject-color:${subject.color};--subject-wash:${subject.wash}`"><div class="library-card-head"><span class="subject-symbol" x-html="subject.symbol"></span><span class="library-count" x-text="subject.questions.length + ' questions' "></span></div><p class="subject-category" x-text="subject.category"></p><h2 x-text="subject.name"></h2><p class="library-desc" x-text="subject.description"></p><div class="topic-pills"><template x-for="topic in subject.topics.slice(0,3)" :key="topic"><span x-text="topic"></span></template><span x-show="subject.topics.length > 3" x-text="'+' + (subject.topics.length - 3) + ' more'"></span></div><button class="button button-dark" @click="openSubject(subject.id)">Explore subject <i data-lucide="arrow-right"></i></button></article></template></div>
+					<p class="empty-state" x-show="filteredSubjects.length === 0">No subjects match that search. Try a different topic.</p>
+				</section>
+
+				<section x-show="view === 'subject'" x-cloak>
+					<div class="subject-detail-hero" :style="`--subject-color:${activeSubject?.color};--subject-wash:${activeSubject?.wash}`" x-show="activeSubject"><button class="back-link" @click="navigate('subjects')"><i data-lucide="arrow-left"></i> All subjects</button><div class="detail-hero-content"><div><p class="subject-category" x-text="activeSubject?.category"></p><h1 x-text="activeSubject?.name"></h1><p x-text="activeSubject?.description"></p><button class="button button-dark" @click="startQuiz(activeSubject?.id)">Start a quiz <i data-lucide="arrow-right"></i></button></div><span class="detail-symbol" x-html="activeSubject?.symbol"></span></div><div class="detail-meta"><span><i data-lucide="book-open"></i> <span x-text="activeSubject?.topics.length + ' topics'"></span></span><span><i data-lucide="circle-help"></i> <span x-text="activeSubject?.questions.length + ' practice questions'"></span></span><span><i data-lucide="chart-no-axes-column-increasing"></i> <span x-text="subjectProgress(activeSubject?.id) + '% progress'"></span></span></div></div>
+					<div class="topic-section-heading"><div><p class="eyebrow">LEARN IN CHUNKS</p><h2>Topics to explore</h2></div><button class="text-button" @click="startQuiz(activeSubject?.id)">Quiz this subject <i data-lucide="arrow-right"></i></button></div>
+					<div class="topic-list" x-show="activeSubject"><template x-for="(topic, index) in activeSubject?.topics" :key="topic"><button class="topic-row" @click="startQuiz(activeSubject.id, topic)"><span class="topic-number" x-text="String(index + 1).padStart(2, '0')"></span><span class="topic-name"><strong x-text="topic"></strong><small>Practice questions and key concepts</small></span><span class="topic-status" :class="{ 'topic-done': isTopicDone(activeSubject.id, topic) }"><i :data-lucide="isTopicDone(activeSubject.id, topic) ? 'check' : 'arrow-up-right'"></i></span></button></template></div>
+				</section>
+
+				<section x-show="view === 'quiz'" x-cloak>
+					<div class="quiz-view" x-show="quizActive">
+						<div class="quiz-topline"><button class="back-link" @click="leaveQuiz()"><i data-lucide="arrow-left"></i> Exit quiz</button><span class="quiz-session-label" x-text="quizSubjectLabel"></span><span class="quiz-score-label"><i data-lucide="sparkles"></i> <span x-text="quizScore"></span> correct</span></div>
+						<div class="quiz-progress-row"><span x-text="'QUESTION ' + (questionIndex + 1) + ' OF ' + quizQuestions.length"></span><span x-text="Math.round((questionIndex / quizQuestions.length) * 100) + '%' "></span></div><div class="quiz-progress-track"><span :style="`width:${(questionIndex / quizQuestions.length) * 100}%`"></span></div>
+						<article class="question-card" x-show="!quizFinished"><div class="question-meta"><span class="question-topic" x-text="currentQuestion?.topic"></span><span class="difficulty-label" :class="'difficulty-' + currentQuestion?.difficulty" x-text="currentQuestion?.difficulty"></span></div><h1 x-text="currentQuestion?.question"></h1><div class="answer-options"><template x-for="(option, index) in currentQuestion?.options" :key="option"><button class="answer-option" :class="answerClass(index)" :disabled="selectedAnswer !== null" @click="answerQuestion(index)"><span class="answer-letter" x-text="String.fromCharCode(65 + index)"></span><span x-text="option"></span><i class="answer-check" :data-lucide="answerIcon(index)"></i></button></template></div><div class="answer-feedback" x-show="selectedAnswer !== null" x-transition><span class="feedback-icon" :class="selectedAnswer === currentQuestion?.answer ? 'feedback-correct' : 'feedback-wrong'"><i :data-lucide="selectedAnswer === currentQuestion?.answer ? 'check' : 'x'"></i></span><div><strong x-text="selectedAnswer === currentQuestion?.answer ? 'That’s right!' : 'Not quite this time.'"></strong><p x-text="currentQuestion?.explanation"></p></div></div><div class="quiz-footer"><span><i data-lucide="lightbulb"></i> Take your time. Learning is the point.</span><button class="button button-dark" x-show="selectedAnswer !== null" @click="nextQuestion()" x-text="questionIndex === quizQuestions.length - 1 ? 'See results' : 'Next question'"></button></div></article>
+						<article class="results-card" x-show="quizFinished" x-cloak><div class="results-mark"><i data-lucide="trophy"></i></div><p class="eyebrow">QUIZ COMPLETE</p><h1 x-text="resultMessage"></h1><div class="result-score"><strong x-text="quizScore"></strong><span>/ <span x-text="quizQuestions.length"></span><small>correct answers</small></span></div><p class="results-copy" x-text="resultCopy"></p><div class="results-actions"><button class="button button-dark" @click="startQuiz(quizSubjectId)">Try another quiz <i data-lucide="rotate-ccw"></i></button><button class="button button-outline" @click="navigate('home')">Back to overview</button></div></article>
+					</div>
+					<div class="quiz-setup" x-show="!quizActive"><p class="eyebrow">PRACTICE MODE</p><h1>Ready for a quick check?</h1><p>Ten questions, clear explanations, and no pressure. Choose where to begin.</p><div class="setup-subjects"><button class="setup-chip" :class="{ 'setup-chip-active': selectedQuizSubject === 'all' }" @click="selectedQuizSubject = 'all'">All science</button><template x-for="subject in subjects" :key="subject.id"><button class="setup-chip" :class="{ 'setup-chip-active': selectedQuizSubject === subject.id }" @click="selectedQuizSubject = subject.id"><span class="subject-dot" :style="`--subject-color:${subject.color}`"></span><span x-text="subject.name"></span></button></template></div><button class="button button-dark setup-start" @click="startQuiz(selectedQuizSubject === 'all' ? null : selectedQuizSubject)">Start 10-question quiz <i data-lucide="arrow-right"></i></button></div>
+				</section>
+
+				<section x-show="view === 'flashcards'" x-cloak>
+					<div class="page-heading flash-heading"><div><p class="eyebrow">ACTIVE RECALL</p><h1>Flashcards that stick.</h1><p>Think of your answer, then flip the card to check.</p></div><label class="filter-select"><i data-lucide="filter"></i><select x-model="flashSubject" aria-label="Filter flashcards by subject"><option value="all">All subjects</option><template x-for="subject in subjects" :key="subject.id"><option :value="subject.id" x-text="subject.name"></option></template></select></label></div>
+					<div class="flashcard-workspace" x-show="filteredCards.length"><div class="flashcard-count"><span x-text="String(flashIndex + 1).padStart(2, '0')"></span><span class="count-divider"></span><span x-text="String(filteredCards.length).padStart(2, '0')"></span><span class="flashcard-subject" x-text="currentFlashcard?.subjectName"></span></div><button class="flashcard" @click="flashFlipped = !flashFlipped" :class="{ 'is-flipped': flashFlipped }"><span class="flashcard-corner"><i data-lucide="rotate-3d"></i></span><span class="flashcard-label" x-text="flashFlipped ? 'THE ANSWER' : 'THINK ABOUT IT'"></span><strong x-text="flashFlipped ? currentFlashcard?.answer : currentFlashcard?.question"></strong><span class="flashcard-hint" x-text="flashFlipped ? currentFlashcard?.topic : 'Click to reveal answer'"></span></button><div class="flashcard-controls"><button class="icon-button" @click="previousFlashcard()" aria-label="Previous flashcard"><i data-lucide="arrow-left"></i></button><button class="button button-outline" @click="flashFlipped = !flashFlipped"><i data-lucide="rotate-ccw"></i> Flip card</button><button class="icon-button" @click="nextFlashcard()" aria-label="Next flashcard"><i data-lucide="arrow-right"></i></button></div><div class="confidence-row" x-show="flashFlipped"><span>How well did you know it?</span><button @click="markFlashcard('again')">Need another look</button><button @click="markFlashcard('known')">Got it <i data-lucide="check"></i></button></div></div><div class="empty-state" x-show="!filteredCards.length">No flashcards for this subject yet.</div>
+				</section>
+
+				<section x-show="view === 'progress'" x-cloak>
+					<div class="page-heading"><p class="eyebrow">YOUR LEARNING, IN FOCUS</p><h1>Progress, not perfection.</h1><p>Every question you try is a step forward. Here’s how it’s adding up.</p></div>
+					<div class="progress-summary"><article class="progress-stat"><span class="stat-icon stat-green"><i data-lucide="circle-check"></i></span><span class="stat-label">QUESTIONS ANSWERED</span><strong x-text="stats.answered"></strong><small>Since you started</small></article><article class="progress-stat"><span class="stat-icon stat-coral"><i data-lucide="target"></i></span><span class="stat-label">ACCURACY</span><strong x-text="accuracy + '%' "></strong><small>Correct answers overall</small></article><article class="progress-stat"><span class="stat-icon stat-yellow"><i data-lucide="flame"></i></span><span class="stat-label">DAY STREAK</span><strong x-text="streak"></strong><small>Keep showing up</small></article></div>
+					<div class="progress-subjects"><div class="section-heading"><div><p class="eyebrow">SUBJECT BREAKDOWN</p><h2>Your science mix</h2></div></div><template x-for="subject in subjects" :key="subject.id"><button class="progress-subject-row" @click="openSubject(subject.id)"><span class="subject-dot" :style="`--subject-color:${subject.color}`"></span><strong x-text="subject.name"></strong><span class="progress-bar"><span :style="`width:${subjectProgress(subject.id)}%;background:${subject.color}`"></span></span><span class="progress-percentage" x-text="subjectProgress(subject.id) + '%' "></span><i data-lucide="arrow-right"></i></button></template></div>
+					<button class="reset-progress" @click="resetProgress()">Reset saved progress</button>
+				</section>
+			</div>
+		</main>
+	</div>
+</body>
+</html>
