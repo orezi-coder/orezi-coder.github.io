@@ -20,7 +20,7 @@ button { color: inherit; }
 button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #85af9c; outline-offset: 3px; }
 [x-cloak] { display: none !important; }
 .app-shell { min-height: 100vh; }
-.sidebar { position: fixed; inset: 0 auto 0 0; z-index: 20; display: flex; width: 238px; flex-direction: column; border-right: 1px solid #e5e5dc; background: #fbfaf6; padding: 27px 17px 15px; }
+.sidebar { position: fixed; inset: 0 auto 0 0; z-index: 20; display: flex; width: 238px; flex-direction: column; overflow-y: auto; overscroll-behavior: contain; border-right: 1px solid #e5e5dc; background: #fbfaf6; padding: 27px 17px 15px; }
 .brand { display: flex; align-items: center; gap: 9px; margin: 0 0 43px 4px; color: var(--ink); font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: 0; text-decoration: none; }
 .brand-mark { display: grid; width: 29px; height: 29px; place-items: center; border-radius: 9px; background: #dce9df; color: #27624e; }
 .brand-mark svg { width: 19px; height: 19px; stroke-width: 2.4; }
@@ -37,7 +37,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .subject-link { min-height: 34px; padding: 0 9px; font-size: 12px; font-weight: 600; }
 .subject-dot { flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: var(--subject-color); }
 .subject-mini-count { margin-left: auto; color: #a1a59f; font-family: var(--font-mono); font-size: 10px; }
-.sidebar-spacer { flex: 1; min-height: 20px; }
+.sidebar-spacer { flex: 1; min-height: 0; }
 .sidebar-note { padding: 14px 13px 13px; border: 1px solid #e3e5da; border-radius: 7px; background: linear-gradient(135deg, #f0f1e8, #f8f6ed 72%); }
 .note-icon { display: grid; width: 27px; height: 27px; place-items: center; border-radius: 7px; background: #e0e8d9; color: #597250; }
 .note-icon svg { width: 15px; height: 15px; }
@@ -329,6 +329,18 @@ h1, h2, p { overflow-wrap: anywhere; }
 	.cell-art { right: -19px; transform: translateY(-49%) scale(.86); }
 	.continue-copy { width: 72%; }
 	.continue-footer { gap: 8px; }
+}
+
+@media (max-height: 800px) and (min-width: 761px) {
+	.sidebar { padding-top: 12px; padding-bottom: 7px; }
+	.brand { margin-bottom: 22px; }
+	.sidebar-divider { margin-top: 12px; margin-bottom: 12px; }
+	.nav-link { min-height: 34px; }
+	.subject-link { min-height: 29px; }
+	.sidebar-note { padding: 9px 10px; }
+	.sidebar-note p { margin-top: 6px; }
+	.sidebar-note button { margin-top: 6px; }
+	.profile-row { margin-top: 7px; padding-top: 8px; }
 }
 
 @media (max-width: 760px) {
