@@ -23,8 +23,11 @@ required before sign-in can work.
 5. In **Firestore Database**, create a database. In its **Rules** tab, publish
    the contents of `firestore.rules`. These rules restrict progress reads and
    writes to the signed-in, email-verified owner.
-6. Optionally configure Firebase's email templates and password policy in
-   **Authentication**. The app requires passwords of at least eight characters.
+6. In **Authentication → Templates**, confirm the **Email address
+   verification** template is enabled. Firebase sends verification messages
+   using its default delivery service; check the recipient's spam/junk folder
+   if a message does not arrive. You can customize the template and sender
+   details there. The app requires passwords of at least eight characters.
 7. Deploy the `quiz` folder to GitHub Pages and test account creation, email
    verification, Google sign-in, password reset, and progress sync between two
    browser sessions.
@@ -66,8 +69,13 @@ flashcard, add a case-insensitive entry to the top-level `glossary` object.
 Matching terms receive an accessible definition tooltip on hover or keyboard
 focus.
 
-The app supports light, dark, and system color themes. The selected theme is
-saved in the current browser. Buttons and flashcard flips use short sounds
-generated in the browser; interaction remains available if audio is unsupported.
+The app supports light, polished graphite dark, green dark, and system color themes.
+The dark option uses a neutral black-and-gray palette; Green selects the original
+green palette. The selected theme is saved in the current browser. Buttons and
+flashcard flips use short sounds generated in the browser; interaction remains
+available if audio is unsupported. Cards and controls also provide subtle
+hover and press feedback. The interactive starfield uses drifting white stars
+and a low-contrast grayscale nebula haze; it pauses for reduced-motion users
+and when the page is hidden.
 Search covers disciplines, subjects, topics, and question content. Resetting account progress clears quiz results, completed
 topics, flashcards, and streak data in Firestore; it keeps the Firebase account.

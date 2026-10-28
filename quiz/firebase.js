@@ -43,6 +43,7 @@ try {
 		doc,
 		onAuthStateChanged,
 		onSnapshot,
+		reload,
 		sendEmailVerification,
 		sendPasswordResetEmail,
 		serverTimestamp,

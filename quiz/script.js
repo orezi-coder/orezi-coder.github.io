@@ -2,6 +2,153 @@ import questionBank from './questions.json' with { type: 'json' };
 
 const { disciplines, subjects: learningSubjects, glossary } = questionBank;
 
+const startStarfield = () => {
+	const canvas = document.querySelector('.cosmic-background');
+	const context = canvas?.getContext('2d');
+	if (!canvas || !context) return;
+
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+	const stars = Array.from({ length: Math.min(160, Math.max(70, Math.round(window.innerWidth * window.innerHeight / 10000))) }, (_, index) => ({
+		x: Math.random() * window.innerWidth,
+		y: Math.random() * window.innerHeight,
+		radius: 0.45 + Math.random() * (index % 12 === 0 ? 1.15 : 0.65),
+		alpha: 0.18 + Math.random() * 0.5,
+		phase: Math.random() * Math.PI * 2,
+		twinkle: 0.1 + Math.random() * 0.22,
+		vx: index % 4 === 0 ? (Math.random() - 0.5) * 0.12 : 0,
+		vy: index % 4 === 0 ? (Math.random() - 0.5) * 0.12 : 0,
+	}));
+	const nebulae = [
+		{ x: 0.16, y: 0.24, radius: 0.34, phase: 0 },
+		{ x: 0.82, y: 0.62, radius: 0.4, phase: 2 },
+		{ x: 0.51, y: 0.91, radius: 0.28, phase: 4 },
+	];
+	let width = 0;
+	let height = 0;
+	let frame = 0;
+	let previousTime = 0;
+	let stopped = false;
+	let pointerX = 0;
+	let pointerY = 0;
+	let targetPointerX = 0;
+	let targetPointerY = 0;
+
+	const resize = () => {
+		const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+		const previousWidth = width;
+		const previousHeight = height;
+		width = window.innerWidth;
+		height = window.innerHeight;
+		if (previousWidth && previousHeight) {
+			for (const star of stars) {
+				star.x = Math.min(width, star.x * width / previousWidth);
+				star.y = Math.min(height, star.y * height / previousHeight);
+			}
+		}
+		canvas.width = Math.round(width * ratio);
+		canvas.height = Math.round(height * ratio);
+		context.setTransform(ratio, 0, 0, ratio, 0, 0);
+	};
+
+	const draw = (time = 0) => {
+		context.clearRect(0, 0, width, height);
+		const theme = document.documentElement.dataset.resolvedTheme;
+		const palette = theme === 'dark'
+			? ['153 153 160', '116 116 124', '191 191 197']
+			: theme === 'green'
+				? ['103 164 176', '112 133 191', '123 174 145']
+				: ['112 145 185', '132 123 180', '117 165 176'];
+		const delta = previousTime ? Math.min((time - previousTime) / 16.67, 2) : 1;
+		previousTime = time;
+
+		if (!reducedMotion.matches && !document.hidden) {
+			pointerX += (targetPointerX - pointerX) * 0.025;
+			pointerY += (targetPointerY - pointerY) * 0.025;
+			for (const star of stars) {
+				star.x += star.vx * delta;
+				star.y += star.vy * delta;
+				if (star.x < 0) star.x = width;
+				if (star.x > width) star.x = 0;
+				if (star.y < 0) star.y = height;
+				if (star.y > height) star.y = 0;
+			}
+		}
+
+		const nebulaAlpha = theme === 'dark' ? 0.038 : 0.024;
+		for (const [index, nebula] of nebulae.entries()) {
+			const color = palette[index];
+			const drift = reducedMotion.matches ? 0 : Math.sin(time / 18000 + nebula.phase) * 0.035;
+			const x = width * (nebula.x + pointerX * 0.012 + drift);
+			const y = height * (nebula.y + pointerY * 0.012 - drift);
+			const radius = Math.max(width, height) * nebula.radius;
+			const gradient = context.createRadialGradient(x, y, 0, x, y, radius);
+			gradient.addColorStop(0, `rgb(${color} / ${nebulaAlpha})`);
+			gradient.addColorStop(0.45, `rgb(${color} / ${nebulaAlpha * 0.45})`);
+			gradient.addColorStop(1, `rgb(${color} / 0)`);
+			context.fillStyle = gradient;
+			context.fillRect(0, 0, width, height);
+		}
+
+		for (const star of stars) {
+			const twinkle = reducedMotion.matches ? 1 : 0.76 + Math.sin(time / 1400 + star.phase) * star.twinkle;
+			const alpha = Math.max(0.08, star.alpha * twinkle);
+			const x = star.x + pointerX * (star.radius > 1 ? 2.5 : 1);
+			const y = star.y + pointerY * (star.radius > 1 ? 2.5 : 1);
+			context.fillStyle = `rgba(235, 235, 239, ${alpha})`;
+			context.beginPath();
+			context.arc(x, y, star.radius, 0, Math.PI * 2);
+			context.fill();
+		}
+
+		frame = 0;
+		if (!stopped && !reducedMotion.matches && !document.hidden) frame = window.requestAnimationFrame(draw);
+	};
+
+	const render = () => {
+		if (stopped) return;
+		if (frame) window.cancelAnimationFrame(frame);
+		frame = 0;
+		previousTime = 0;
+		draw();
+	};
+	const onVisibilityChange = () => render();
+	const onMotionPreferenceChange = () => render();
+	const onThemeChange = () => render();
+	const onPointerMove = (event) => {
+		targetPointerX = (event.clientX / width - 0.5) * 2;
+		targetPointerY = (event.clientY / height - 0.5) * 2;
+	};
+	const onPointerLeave = () => {
+		targetPointerX = 0;
+		targetPointerY = 0;
+	};
+	const onResize = () => {
+		resize();
+		render();
+	};
+	const stop = () => {
+		stopped = true;
+		if (frame) window.cancelAnimationFrame(frame);
+		window.removeEventListener('resize', onResize);
+		document.removeEventListener('visibilitychange', onVisibilityChange);
+		reducedMotion.removeEventListener('change', onMotionPreferenceChange);
+		window.removeEventListener('rezi-theme-change', onThemeChange);
+		window.removeEventListener('pointermove', onPointerMove);
+		window.removeEventListener('pointerleave', onPointerLeave);
+		window.removeEventListener('pagehide', stop);
+	};
+
+	resize();
+	window.addEventListener('resize', onResize, { passive: true });
+	document.addEventListener('visibilitychange', onVisibilityChange);
+	reducedMotion.addEventListener('change', onMotionPreferenceChange);
+	window.addEventListener('rezi-theme-change', onThemeChange);
+	window.addEventListener('pointermove', onPointerMove, { passive: true });
+	window.addEventListener('pointerleave', onPointerLeave);
+	window.addEventListener('pagehide', stop, { once: true });
+	render();
+};
+
 const emptyProgress = () => ({
 	answered: 0,
 	correct: 0,
@@ -145,6 +292,7 @@ document.addEventListener('alpine:init', () => {
 				this.themeError = `Theme preference could not be loaded: ${error.message}`;
 			}
 			this.applyTheme();
+			startStarfield();
 			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
 				if (this.theme === 'system') this.applyTheme();
 			});
@@ -969,11 +1117,12 @@ document.addEventListener('alpine:init', () => {
 				: this.theme;
 			document.documentElement.dataset.resolvedTheme = resolvedTheme;
 			const themeColor = document.querySelector('meta[name="theme-color"]');
-			if (themeColor) themeColor.content = resolvedTheme === 'dark' ? '#151c18' : '#f6f5ef';
+			if (themeColor) themeColor.content = resolvedTheme === 'dark' ? '#09090b' : resolvedTheme === 'green' ? '#151c18' : '#f6f5ef';
+			window.dispatchEvent(new Event('rezi-theme-change'));
 		},
 
 		setTheme(theme) {
-			if (!['light', 'dark', 'system'].includes(theme)) return;
+			if (!['light', 'dark', 'green', 'system'].includes(theme)) return;
 			this.theme = theme;
 			this.applyTheme();
 			this.themeError = '';
