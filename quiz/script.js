@@ -622,6 +622,7 @@ document.addEventListener('alpine:init', () => {
 			try {
 				const user = this.firebase.auth.currentUser;
 				await this.firebase.reload(user);
+				await this.firebase.getIdToken(user, true);
 				await this.handleAuthState(user);
 				if (!user.emailVerified) this.authNotice = 'Your email is not verified yet. Check your inbox for the verification link.';
 			} catch (error) {
@@ -653,9 +654,20 @@ document.addEventListener('alpine:init', () => {
 			}
 		},
 
-		retryProgressSync() {
+		async retryProgressSync() {
 			this.authLoading = true;
-			this.handleAuthState(this.firebase.auth.currentUser);
+			this.firestoreError = '';
+			const user = this.firebase.auth.currentUser;
+			try {
+				if (user) {
+					await this.firebase.reload(user);
+					await this.firebase.getIdToken(user, true);
+				}
+				await this.handleAuthState(user);
+			} catch (error) {
+				this.authLoading = false;
+				this.firestoreError = `Authentication status could not be refreshed: ${error.message}`;
+			}
 		},
 
 		get pageTitle() {

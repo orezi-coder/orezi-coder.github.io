@@ -60,7 +60,7 @@
 				<div x-show="!firebaseConfigError && authUser?.emailVerified" role="alert">
 					<p class="eyebrow">FIRESTORE SYNC</p><h1>Couldn’t load your progress.</h1>
 					<p class="auth-alert" x-text="firestoreError"></p>
-					<p class="auth-description">Check that Firestore is enabled and the rules in <a href="firestore.rules">firestore.rules</a> are published.</p>
+					<p class="auth-description">Firestore access requires a verified email and rules published to this app’s Firebase project. In <a href="firestore.rules">firestore.rules</a>, copy the rules into Firebase Console → Firestore Database → Rules and click <strong>Publish</strong>. Make sure the project matches this app’s Firebase configuration.</p>
 					<div class="auth-actions"><button class="button button-dark" @click="retryProgressSync()">Try again</button><button class="button button-outline" @click="signOut()">Sign out</button></div>
 				</div>
 				<div x-show="!firebaseConfigError && !authUser">

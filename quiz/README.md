@@ -22,7 +22,9 @@ required before sign-in can work.
    hostname too, if you use one.
 5. In **Firestore Database**, create a database. In its **Rules** tab, publish
    the contents of `firestore.rules`. These rules restrict progress reads and
-   writes to the signed-in, email-verified owner.
+   writes to the signed-in, email-verified owner. Confirm the selected Firebase
+   project is the same one configured in `firebase-config.js`; an unpublished
+   rules file in this repository does not update the live Firestore rules.
 6. In **Authentication → Templates**, confirm the **Email address
    verification** template is enabled. Firebase sends verification messages
    using its default delivery service; check the recipient's spam/junk folder
