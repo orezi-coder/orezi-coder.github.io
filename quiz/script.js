@@ -1,126 +1,6 @@
-const makeQuestion = (topic, difficulty, question, options, answer, explanation) => ({
-	topic,
-	difficulty,
-	question,
-	options,
-	answer,
-	explanation,
-});
+import questionBank from './questions.json' with { type: 'json' };
 
-const scienceSubjects = [
-	{
-		id: 'biology',
-		name: 'Biology',
-		category: 'LIFE SCIENCE',
-		color: '#287f68',
-		wash: '#e7f1e9',
-		symbol: '✳',
-		description: 'Explore the systems, structures, and interactions that make life possible, from tiny cells to whole ecosystems.',
-		topics: ['Cell biology', 'Genetics & inheritance', 'Human body systems', 'Ecology'],
-		questions: [
-			makeQuestion('Cell biology', 'easy', 'Which organelle releases usable energy from glucose during cellular respiration?', ['The nucleus', 'The mitochondrion', 'The ribosome', 'The vacuole'], 1, 'Mitochondria are the main site of aerobic cellular respiration, transferring energy from glucose into ATP.'),
-			makeQuestion('Cell biology', 'medium', 'What is the main role of the cell membrane?', ['To store genetic information', 'To control what enters and leaves the cell', 'To make proteins', 'To release oxygen'], 1, 'The selectively permeable cell membrane regulates the movement of substances into and out of the cell.'),
-			makeQuestion('Cell biology', 'medium', 'Which cell structure assembles amino acids into proteins?', ['The ribosome', 'The lysosome', 'The centriole', 'The cell wall'], 0, 'Ribosomes read messenger RNA and join amino acids in the order specified to build proteins.'),
-			makeQuestion('Cell biology', 'hard', 'A red blood cell is placed in a very dilute solution. What is most likely to happen?', ['Water leaves the cell by osmosis', 'Water enters the cell by osmosis', 'Solute leaves until the cell shrinks', 'The membrane becomes impermeable'], 1, 'Water moves by osmosis from the dilute surroundings into the cell, which can swell and potentially burst.'),
-			makeQuestion('Genetics & inheritance', 'medium', 'In a DNA molecule, which base pairs with adenine?', ['Cytosine', 'Guanine', 'Thymine', 'Uracil'], 2, 'In DNA, adenine pairs with thymine. In RNA, adenine pairs with uracil instead.'),
-			makeQuestion('Genetics & inheritance', 'medium', 'An organism has two different alleles for a gene. What is this condition called?', ['Homozygous', 'Heterozygous', 'Dominant', 'Recessive'], 1, 'A heterozygous organism carries two different alleles for a particular gene.'),
-			makeQuestion('Genetics & inheritance', 'medium', 'Which molecule carries a copied genetic message from DNA to a ribosome?', ['Messenger RNA', 'Cellulose', 'Glycogen', 'Amino acid'], 0, 'Messenger RNA carries a copy of a gene’s instructions from DNA to a ribosome for protein synthesis.'),
-			makeQuestion('Genetics & inheritance', 'hard', 'Two heterozygous parents have a child. If a recessive condition requires two recessive alleles, what is the chance the child has the condition?', ['0%', '25%', '50%', '75%'], 1, 'A cross of two heterozygous parents gives one recessive homozygous outcome out of four equally likely genotypes.'),
-			makeQuestion('Human body systems', 'easy', 'Which part of the blood carries most of the oxygen around the body?', ['Platelets', 'White blood cells', 'Red blood cells', 'Plasma proteins'], 2, 'Hemoglobin in red blood cells binds oxygen in the lungs and carries it to body tissues.'),
-			makeQuestion('Human body systems', 'medium', 'Where does most chemical digestion and nutrient absorption happen?', ['The esophagus', 'The small intestine', 'The large intestine', 'The stomach'], 1, 'The small intestine completes much of chemical digestion and absorbs nutrients through its folded lining.'),
-			makeQuestion('Human body systems', 'medium', 'Where does oxygen move into the blood in the lungs?', ['The trachea', 'The alveoli', 'The diaphragm', 'The bronchi'], 1, 'Alveoli have thin walls and a rich blood supply, allowing oxygen to diffuse into nearby capillaries.'),
-			makeQuestion('Human body systems', 'hard', 'Which kidney structure filters blood to begin forming urine?', ['The nephron', 'The alveolus', 'The villus', 'The tendon'], 0, 'Nephrons filter blood, then selectively reabsorb useful water and substances as urine is formed.'),
-			makeQuestion('Ecology', 'easy', 'Which organisms make their own food and form the base of most food chains?', ['Consumers', 'Decomposers', 'Producers', 'Predators'], 2, 'Producers, such as plants and algae, capture energy and make organic molecules that support other organisms.'),
-			makeQuestion('Ecology', 'medium', 'What is the term for all the populations of different species living in one area?', ['An ecosystem', 'A community', 'A habitat', 'A biome'], 1, 'A community is made up of the populations of different species living and interacting in an area.'),
-			makeQuestion('Ecology', 'medium', 'What usually happens to the available energy as it moves from one trophic level to the next?', ['It increases at each level', 'It stays exactly the same', 'It decreases because organisms use and lose energy', 'It is converted entirely into matter'], 2, 'Organisms use much of the energy they obtain, and some is lost as heat, so less is available at higher trophic levels.'),
-			makeQuestion('Ecology', 'hard', 'A bee gets nectar from a flower while helping pollinate it. What type of interaction is this?', ['Competition', 'Mutualism', 'Parasitism', 'Predation'], 1, 'In mutualism, both species benefit: the bee obtains food and the flower gains help with pollination.'),
-		],
-	},
-	{
-		id: 'chemistry',
-		name: 'Chemistry',
-		category: 'MATTER & CHANGE',
-		color: '#bc6843',
-		wash: '#f6ebe4',
-		symbol: '◈',
-		description: 'Make sense of atoms, reactions, and the materials around you by learning how matter is organized and transformed.',
-		topics: ['Atoms & elements', 'Chemical bonding', 'Reactions & equations', 'Acids & bases'],
-		questions: [
-			makeQuestion('Atoms & elements', 'easy', 'Which subatomic particle determines the identity of an element?', ['The neutron', 'The electron', 'The proton', 'The isotope'], 2, 'An element is defined by its atomic number: the number of protons in its nucleus.'),
-			makeQuestion('Atoms & elements', 'medium', 'Isotopes of the same element differ in their number of which particles?', ['Protons', 'Neutrons', 'Electron shells', 'Chemical bonds'], 1, 'Isotopes have the same number of protons but different numbers of neutrons.'),
-			makeQuestion('Atoms & elements', 'medium', 'What is the atomic number of an atom with 11 protons?', ['5', '11', '22', 'It depends on its neutrons'], 1, 'An element’s atomic number is the number of protons in its nucleus, so this atom has atomic number 11.'),
-			makeQuestion('Atoms & elements', 'hard', 'A neutral atom has 17 protons. How many electrons does it have?', ['8', '17', '18', '34'], 1, 'A neutral atom has equal numbers of protons and electrons, so it has 17 electrons.'),
-			makeQuestion('Chemical bonding', 'medium', 'What happens to electrons when a typical ionic bond forms?', ['They are shared equally', 'They are transferred from one atom to another', 'They disappear', 'They form the nucleus'], 1, 'Ionic bonding involves electron transfer, producing oppositely charged ions that attract each other.'),
-			makeQuestion('Chemical bonding', 'easy', 'A covalent bond forms when atoms do what with electrons?', ['Share them', 'Destroy them', 'Exchange protons', 'Lose their nuclei'], 0, 'Covalent bonds form when atoms share pairs of electrons.'),
-			makeQuestion('Chemical bonding', 'medium', 'Why is an ionic compound such as sodium chloride electrically neutral overall?', ['Its ions have no charges', 'Positive and negative charges balance', 'It contains equal numbers of protons and neutrons', 'Its electrons are shared equally'], 1, 'The total positive and negative charges in an ionic compound balance to give no net charge.'),
-			makeQuestion('Chemical bonding', 'hard', 'What holds the atoms together in a typical metallic solid?', ['Attraction between metal ions and delocalized electrons', 'Shared electron pairs between two nonmetals only', 'Hydrogen bonds between water molecules', 'Gravity between neutral atoms'], 0, 'Metallic bonding is the electrostatic attraction between positive metal ions and delocalized electrons.'),
-			makeQuestion('Reactions & equations', 'medium', 'What must be equal on both sides of a balanced chemical equation?', ['The number of each type of atom', 'The number of molecules', 'The total volume', 'The number of compounds'], 0, 'Atoms are conserved in a chemical reaction, so each element must have the same atom count on both sides.'),
-			makeQuestion('Reactions & equations', 'easy', 'In a chemical reaction, the substances present at the start are called what?', ['Products', 'Catalysts', 'Reactants', 'Solutions'], 2, 'Reactants are the starting substances that are changed into products during a reaction.'),
-			makeQuestion('Reactions & equations', 'medium', 'In 2H₂ + O₂ → 2H₂O, what is the coefficient of oxygen gas?', ['1', '2', '3', '4'], 0, 'A coefficient of 1 is understood when no number is written before a formula, so one O₂ molecule is shown.'),
-			makeQuestion('Reactions & equations', 'hard', 'How does a catalyst increase the rate of a chemical reaction?', ['By increasing the amount of product possible', 'By lowering the activation energy', 'By changing the atoms into different elements', 'By raising the reaction temperature automatically'], 1, 'A catalyst provides an alternative reaction pathway with a lower activation energy and is not used up overall.'),
-			makeQuestion('Acids & bases', 'easy', 'A solution with a pH of 3 is best described as what?', ['Acidic', 'Neutral', 'Alkaline', 'Saturated'], 0, 'Values below 7 are acidic on the pH scale; a lower pH indicates greater acidity.'),
-			makeQuestion('Acids & bases', 'medium', 'What are the typical products when an acid reacts with a base?', ['A salt and water', 'Hydrogen and oxygen', 'A metal and carbon dioxide', 'Only water'], 0, 'Neutralization reactions between acids and bases generally produce a salt and water.'),
-			makeQuestion('Acids & bases', 'medium', 'Which ion is commonly associated with alkaline solutions in water?', ['Hydrogen, H⁺', 'Hydroxide, OH⁻', 'Chloride, Cl⁻', 'Nitrate, NO₃⁻'], 1, 'Alkaline solutions contain hydroxide ions; acids are associated with hydrogen ions in aqueous solution.'),
-			makeQuestion('Acids & bases', 'hard', 'Compared with a solution at pH 5, how many times greater is the hydrogen ion concentration at pH 3?', ['2 times', '10 times', '100 times', '1,000 times'], 2, 'Each pH unit represents a tenfold change in hydrogen ion concentration, so a two-unit difference is 100-fold.'),
-		],
-	},
-	{
-		id: 'physics',
-		name: 'Physics',
-		category: 'ENERGY & MOTION',
-		color: '#4278a1',
-		wash: '#e7eef3',
-		symbol: '⌁',
-		description: 'Unpack the rules behind motion, forces, energy, and waves, then use them to explain the world in action.',
-		topics: ['Forces & motion', 'Energy & work', 'Waves & sound', 'Electricity'],
-		questions: [
-			makeQuestion('Forces & motion', 'easy', 'A car travels 120 meters in 6 seconds. What is its average speed?', ['20 m/s', '720 m/s', '0.05 m/s', '126 m/s'], 0, 'Average speed equals distance divided by time: 120 m ÷ 6 s = 20 m/s.'),
-			makeQuestion('Forces & motion', 'medium', 'Which equation describes Newton’s second law?', ['F = m ÷ a', 'F = m × a', 'F = a ÷ m', 'F = m + a'], 1, 'Newton’s second law states that the net force on an object equals its mass multiplied by its acceleration.'),
-			makeQuestion('Forces & motion', 'medium', 'Which property makes an object resist a change in its motion?', ['Inertia', 'Pressure', 'Density', 'Elasticity'], 0, 'Inertia is an object’s tendency to resist changes in its state of motion and depends on its mass.'),
-			makeQuestion('Forces & motion', 'hard', 'A moving object experiences zero net force. What happens to its velocity?', ['It steadily increases', 'It steadily decreases', 'It remains constant', 'It instantly becomes zero'], 2, 'With zero net force there is no acceleration, so the object continues with constant velocity.'),
-			makeQuestion('Energy & work', 'easy', 'What is the unit of energy in the SI system?', ['Watt', 'Newton', 'Joule', 'Volt'], 2, 'The joule (J) is the SI unit for energy and work.'),
-			makeQuestion('Energy & work', 'medium', 'A 10-newton force moves an object 3 meters in the force’s direction. How much work is done?', ['3 J', '13 J', '30 J', '0.3 J'], 2, 'Work equals force multiplied by displacement in the direction of the force: 10 N × 3 m = 30 J.'),
-			makeQuestion('Energy & work', 'medium', 'What is the kinetic energy of a 2 kg object moving at 3 m/s?', ['6 J', '9 J', '18 J', '27 J'], 1, 'Kinetic energy is ½mv², so ½ × 2 kg × (3 m/s)² = 9 J.'),
-			makeQuestion('Energy & work', 'hard', 'A device transfers 120 joules of energy in 6 seconds. What is its power?', ['20 W', '114 W', '126 W', '720 W'], 0, 'Power is energy transferred per unit time: 120 J ÷ 6 s = 20 W.'),
-			makeQuestion('Waves & sound', 'easy', 'What type of wave is sound in air?', ['Transverse', 'Longitudinal', 'Electromagnetic', 'Standing only'], 1, 'Sound in air travels as a longitudinal wave made of compressions and rarefactions.'),
-			makeQuestion('Waves & sound', 'medium', 'A wave has a frequency of 5 Hz and a wavelength of 2 m. What is its speed?', ['2.5 m/s', '7 m/s', '10 m/s', '0.4 m/s'], 2, 'Wave speed equals frequency multiplied by wavelength: 5 Hz × 2 m = 10 m/s.'),
-			makeQuestion('Waves & sound', 'medium', 'What happens to the pitch of a sound when its frequency increases?', ['The pitch becomes higher', 'The pitch becomes lower', 'The sound travels faster in air', 'The wavelength must increase'], 0, 'A higher frequency is heard as a higher pitch; pitch does not determine the speed of sound in a given medium.'),
-			makeQuestion('Waves & sound', 'hard', 'An echo is heard when sound waves do what?', ['Are absorbed completely', 'Reflect from a surface and return', 'Change into light', 'Stop vibrating at the source'], 1, 'An echo is reflected sound that returns to the listener after bouncing off a surface.'),
-			makeQuestion('Electricity', 'easy', 'What is the SI unit of electric current?', ['Volt', 'Ohm', 'Ampere', 'Watt'], 2, 'Electric current is measured in amperes (A).'),
-			makeQuestion('Electricity', 'medium', 'A 6-ohm resistor has a current of 2 amperes. What is the voltage across it?', ['3 V', '8 V', '12 V', '0.33 V'], 2, 'Ohm’s law is V = I × R, so 2 A × 6 Ω = 12 V.'),
-			makeQuestion('Electricity', 'medium', 'In a series circuit, what is the same through every component?', ['The current', 'The voltage', 'The resistance', 'The power'], 0, 'There is only one path in a series circuit, so the same current passes through each component.'),
-			makeQuestion('Electricity', 'hard', 'A lamp operates at 12 volts and draws 2 amperes. How much electrical power does it use?', ['6 W', '10 W', '14 W', '24 W'], 3, 'Electrical power is voltage multiplied by current: 12 V × 2 A = 24 W.'),
-		],
-	},
-	{
-		id: 'earth-space',
-		name: 'Earth & Space',
-		category: 'OUR PLANET & BEYOND',
-		color: '#94713b',
-		wash: '#f2efdf',
-		symbol: '◎',
-		description: 'Connect Earth’s changing systems with the wider universe, from moving plates and weather to stars and galaxies.',
-		topics: ['Earth systems', 'Weather & climate', 'The solar system', 'Stars & the universe'],
-		questions: [
-			makeQuestion('Earth systems', 'easy', 'What is the rigid outer layer of Earth, made of the crust and uppermost mantle, called?', ['The core', 'The lithosphere', 'The atmosphere', 'The hydrosphere'], 1, 'The lithosphere is Earth’s rigid outer layer and is broken into moving tectonic plates.'),
-			makeQuestion('Earth systems', 'medium', 'What is a common cause of earthquakes at plate boundaries?', ['The Moon’s phases', 'Sudden movement along faults', 'Daily temperature changes', 'Ocean tides alone'], 1, 'Earthquakes commonly occur when stress builds up and rocks suddenly slip along a fault.'),
-			makeQuestion('Earth systems', 'medium', 'What process changes liquid water at Earth’s surface into water vapor?', ['Condensation', 'Evaporation', 'Precipitation', 'Collection'], 1, 'Evaporation occurs when liquid water gains enough energy to enter the atmosphere as water vapor.'),
-			makeQuestion('Earth systems', 'hard', 'What helps drive the slow movement of tectonic plates?', ['Convection in the mantle', 'Daily ocean tides alone', 'Earth’s magnetic field', 'The changing phases of the Moon'], 0, 'Heat within Earth drives slow mantle convection, which contributes to the movement of tectonic plates.'),
-			makeQuestion('Weather & climate', 'medium', 'What is the main difference between weather and climate?', ['Weather is daily; climate is a long-term pattern', 'Weather is global; climate is local', 'They mean exactly the same thing', 'Climate only describes temperature'], 0, 'Weather describes short-term atmospheric conditions; climate describes patterns over long periods.'),
-			makeQuestion('Weather & climate', 'easy', 'Which gas is a major contributor to the enhanced greenhouse effect from human activities?', ['Oxygen', 'Carbon dioxide', 'Argon', 'Neon'], 1, 'Human activities release carbon dioxide, which absorbs outgoing infrared energy and contributes to warming.'),
-			makeQuestion('Weather & climate', 'medium', 'What usually happens to warm, moist air as it rises and cools?', ['Water vapor may condense into clouds', 'It becomes denser and sinks immediately', 'Its humidity always becomes zero', 'It stops exerting pressure'], 0, 'As rising air cools, water vapor can condense into tiny droplets or ice crystals that form clouds.'),
-			makeQuestion('Weather & climate', 'hard', 'A surface with a high albedo reflects what fraction of incoming sunlight?', ['A large fraction', 'No sunlight at all', 'Only infrared radiation', 'The same amount it absorbs'], 0, 'Albedo describes reflectivity: a high-albedo surface reflects a large proportion of incoming sunlight.'),
-			makeQuestion('The solar system', 'easy', 'Which planet is closest to the Sun?', ['Venus', 'Earth', 'Mercury', 'Mars'], 2, 'Mercury is the innermost planet in our solar system.'),
-			makeQuestion('The solar system', 'medium', 'Why does the Moon appear to change shape during the month?', ['Earth’s shadow always covers part of it', 'We see different portions of its sunlit half', 'The Moon changes its own brightness', 'Clouds cover it in a regular cycle'], 1, 'As the Moon orbits Earth, we see changing fractions of its half illuminated by the Sun.'),
-			makeQuestion('The solar system', 'medium', 'What is the main reason Earth has seasons?', ['Earth’s axis is tilted as it orbits the Sun', 'Earth is much closer to the Sun in summer', 'The Sun changes its temperature each season', 'The Moon blocks different amounts of sunlight'], 0, 'Earth’s axial tilt changes the angle and duration of sunlight received by each hemisphere through the year.'),
-			makeQuestion('The solar system', 'hard', 'Which planet is the largest in our solar system?', ['Saturn', 'Jupiter', 'Neptune', 'Earth'], 1, 'Jupiter is the largest planet in our solar system by both diameter and mass.'),
-			makeQuestion('Stars & the universe', 'easy', 'What is the Sun?', ['A planet', 'A moon', 'A star', 'A galaxy'], 2, 'The Sun is a star: a sphere of hot plasma that produces energy through nuclear fusion.'),
-			makeQuestion('Stars & the universe', 'medium', 'What does the light-year measure?', ['Time', 'Brightness', 'Distance', 'Temperature'], 2, 'A light-year is the distance light travels in one year, about 9.46 trillion kilometers.'),
-			makeQuestion('Stars & the universe', 'medium', 'Which process releases most of the energy produced by the Sun?', ['Nuclear fusion', 'Chemical combustion', 'Nuclear fission of iron', 'Gravitational attraction between planets'], 0, 'The Sun releases energy by fusing hydrogen nuclei into helium in its core.'),
-			makeQuestion('Stars & the universe', 'hard', 'What observation supports the idea that the universe is expanding?', ['Light from many distant galaxies is redshifted', 'All stars have the same brightness', 'The Moon is moving away from the Sun', 'Planets orbit in perfect circles'], 0, 'The redshift of light from distant galaxies indicates that many are moving away as space expands.'),
-		],
-	},
-];
+const { disciplines, subjects: learningSubjects, glossary } = questionBank;
 
 const emptyProgress = () => ({
 	answered: 0,
@@ -132,30 +12,142 @@ const emptyProgress = () => ({
 	lastStudyDate: null,
 });
 
+const migrateProgress = (savedStats, subjects) => {
+	const stats = {
+		...emptyProgress(),
+		...savedStats,
+		bySubject: { ...(savedStats.bySubject || {}) },
+		completedTopics: Array.isArray(savedStats.completedTopics) ? savedStats.completedTopics : [],
+		knownCards: Array.isArray(savedStats.knownCards) ? savedStats.knownCards : [],
+	};
+	const subjectById = new Map(subjects.map((subject) => [subject.id, subject]));
+	const topicDestinations = {
+		'Business & entrepreneurship': 'business-studies',
+		'Marketing & trade': 'business-studies',
+		'Accounting & financial literacy': 'accounting',
+		Economics: 'economics',
+	};
+	let changed = false;
+
+	if (stats.bySubject.art && !stats.bySubject['visual-arts']) {
+		stats.bySubject['visual-arts'] = stats.bySubject.art;
+		delete stats.bySubject.art;
+		changed = true;
+	}
+
+	stats.completedTopics = [...new Set(stats.completedTopics.map((entry) => {
+		const separator = entry.indexOf(':');
+		const subjectId = entry.slice(0, separator);
+		const topic = entry.slice(separator + 1);
+		if (subjectId === 'art') {
+			changed = true;
+			return `visual-arts:${topic}`;
+		}
+		if (subjectId === 'commercial-studies' && topicDestinations[topic]) {
+			changed = true;
+			return `${topicDestinations[topic]}:${topic}`;
+		}
+		return entry;
+	}))];
+
+	const oldCommercialTopics = ['Business & entrepreneurship', 'Accounting & financial literacy', 'Economics', 'Marketing & trade'];
+	const commercialCardIds = oldCommercialTopics.map((topic) => {
+		const subjectId = topicDestinations[topic];
+		const subject = subjectById.get(subjectId);
+		const questionIndexes = subject?.questions
+			.map((question, index) => question.topic === topic ? index : -1)
+			.filter((index) => index >= 0) || [];
+		return { topic, subjectId, questionIndexes };
+	});
+	stats.knownCards = [...new Set(stats.knownCards.map((cardId) => {
+		const artCard = cardId.match(/^art-(\d+)$/);
+		if (artCard) {
+			changed = true;
+			return `visual-arts-${artCard[1]}`;
+		}
+		const commercialCard = cardId.match(/^commercial-studies-(\d+)$/);
+		if (!commercialCard) return cardId;
+
+		const oldIndex = Number(commercialCard[1]);
+		let offset = 0;
+		for (const { topic, subjectId, questionIndexes } of commercialCardIds) {
+			const topicCount = questionIndexes.length;
+			if (oldIndex < offset + topicCount) {
+				changed = true;
+				return `${subjectId}-${questionIndexes[oldIndex - offset]}`;
+			}
+			offset += topicCount;
+		}
+		return cardId;
+	}))];
+
+	return { stats, changed };
+};
+
 document.addEventListener('alpine:init', () => {
 	Alpine.data('reziQuiz', () => ({
-		subjects: scienceSubjects,
+		disciplines,
+		subjects: learningSubjects,
 		view: 'home',
+		activeDisciplineId: null,
 		activeSubjectId: null,
 		mobileMenu: false,
+		accountMenuOpen: false,
 		searchQuery: '',
+		searchOpen: false,
+		searchActiveIndex: 0,
 		flashSubject: 'all',
 		flashIndex: 0,
 		flashFlipped: false,
+		audioContext: null,
+		buttonSoundListenerInstalled: false,
 		selectedQuizSubject: 'all',
 		quizActive: false,
 		quizFinished: false,
 		quizQuestions: [],
 		quizSubjectId: null,
+		quizDisciplineId: null,
 		quizTopic: null,
 		questionIndex: 0,
 		selectedAnswer: null,
 		quizScore: 0,
 		stats: emptyProgress(),
+		firebase: null,
+		authUser: null,
+		authLoading: true,
+		authBusy: false,
+		authMode: 'signIn',
+		showAuthCard: false,
+		authEmail: '',
+		authPassword: '',
+		authDisplayName: '',
+		authError: '',
+		authNotice: '',
+		firebaseConfigError: '',
+		firestoreError: '',
+		firestoreReady: false,
+		syncState: 'synced',
+		authUnsubscribe: null,
+		progressUnsubscribe: null,
+		progressSaveTimer: null,
+		progressWriteQueue: null,
+		progressUserId: null,
+		authGeneration: 0,
+		theme: 'system',
+		themeError: '',
 		weekDays: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
 
-		init() {
-			this.loadProgress();
+		async init() {
+			try {
+				this.theme = window.localStorage.getItem('rezi-theme') || 'system';
+			} catch (error) {
+				this.theme = 'system';
+				this.themeError = `Theme preference could not be loaded: ${error.message}`;
+			}
+			this.applyTheme();
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (this.theme === 'system') this.applyTheme();
+			});
 			this.$nextTick(() => this.renderIcons());
 			this.$watch('view', () => this.$nextTick(() => this.renderIcons()));
 			this.$watch('questionIndex', () => this.$nextTick(() => this.renderIcons()));
@@ -165,35 +157,401 @@ document.addEventListener('alpine:init', () => {
 				this.flashIndex = 0;
 				this.flashFlipped = false;
 			});
+			this.$watch('searchQuery', () => {
+				this.searchActiveIndex = 0;
+			});
+			if (!this.buttonSoundListenerInstalled) {
+				document.addEventListener('click', (event) => {
+					const target = event.target instanceof Element
+						? event.target.closest('button, a[href], [role="button"], .topic-row')
+						: null;
+					if (!target || target.matches(':disabled, [aria-disabled="true"], .flashcard, .flashcard-controls .button-outline')) return;
+					this.playButtonSound();
+				});
+				this.buttonSoundListenerInstalled = true;
+			}
 			window.addEventListener('keydown', (event) => {
 				if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
 					event.preventDefault();
 					document.querySelector('.search-box input')?.focus();
 				}
-				if (event.key === 'Escape') this.mobileMenu = false;
+				if (event.key === 'Escape') {
+					this.mobileMenu = false;
+					this.accountMenuOpen = false;
+					this.searchOpen = false;
+				}
 			});
-		},
-
-		loadProgress() {
 			try {
-				const saved = JSON.parse(localStorage.getItem('reziquiz-progress') || 'null');
-				if (saved && typeof saved === 'object') this.stats = { ...emptyProgress(), ...saved };
-			} catch {
-				this.stats = emptyProgress();
+				let timeout;
+				try {
+					this.firebase = await Promise.race([
+						window.reziFirebaseReady,
+						new Promise((resolve, reject) => {
+							timeout = window.setTimeout(() => reject(new Error('Firebase could not be reached. Check your connection and reload the page.')), 15000);
+						}),
+					]);
+				} finally {
+					window.clearTimeout(timeout);
+				}
+				this.authUnsubscribe = this.firebase.onAuthStateChanged(this.firebase.auth, (user) => {
+					this.handleAuthState(user);
+				});
+			} catch (error) {
+				this.firebaseConfigError = error.message || 'Firebase could not be initialized.';
+				this.authLoading = false;
 			}
 		},
 
 		saveProgress() {
-			localStorage.setItem('reziquiz-progress', JSON.stringify(this.stats));
+			if (!this.isAuthenticated || !this.firebase) return;
+			window.clearTimeout(this.progressSaveTimer);
+			this.syncState = 'syncing';
+			const userId = this.authUser.uid;
+			const generation = this.authGeneration;
+			const stats = JSON.parse(JSON.stringify(this.stats));
+			this.progressSaveTimer = window.setTimeout(() => {
+				this.progressSaveTimer = null;
+				this.persistProgress(userId, generation, stats);
+			}, 250);
 		},
 
 		renderIcons() {
 			if (window.lucide?.createIcons) window.lucide.createIcons();
 		},
 
+		annotateText(text) {
+			if (typeof text !== 'string') return '';
+			const terms = Object.keys(glossary).sort((left, right) => right.length - left.length);
+			if (!terms.length) return this.escapeHtml(text);
+
+			const pattern = new RegExp(`(^|[^\\p{L}\\p{N}_])(${terms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})(?=$|[^\\p{L}\\p{N}_])`, 'giu');
+			let output = '';
+			let lastIndex = 0;
+			let match;
+			while ((match = pattern.exec(text)) !== null) {
+				const prefix = match[1];
+				const term = match[2];
+				const definition = glossary[term.toLowerCase()];
+				const termStart = match.index + prefix.length;
+				output += this.escapeHtml(text.slice(lastIndex, termStart));
+				output += definition
+					? `<span class="term-tooltip" tabindex="0" role="note" aria-label="${this.escapeHtml(`${term}. ${definition}`)}" data-tooltip="${this.escapeHtml(definition)}">${this.escapeHtml(term)}</span>`
+					: this.escapeHtml(term);
+				lastIndex = termStart + term.length;
+			}
+			return output + this.escapeHtml(text.slice(lastIndex));
+		},
+
+		escapeHtml(value) {
+			return value.replace(/[&<>"']/g, (character) => ({
+				'&': '&amp;',
+				'<': '&lt;',
+				'>': '&gt;',
+				'"': '&quot;',
+				"'": '&#39;',
+			})[character]);
+		},
+
+		get isAuthenticated() {
+			return Boolean(this.authUser?.emailVerified && this.firestoreReady);
+		},
+
+		get userInitial() {
+			return (this.authUser?.displayName || this.authUser?.email || 'S').trim().charAt(0).toUpperCase();
+		},
+
+		get userLabel() {
+			return this.authUser?.displayName || this.authUser?.email?.split('@')[0] || 'Student';
+		},
+
+		async handleAuthState(user) {
+			const generation = ++this.authGeneration;
+			this.accountMenuOpen = false;
+			window.clearTimeout(this.progressSaveTimer);
+			this.progressSaveTimer = null;
+			this.progressUnsubscribe?.();
+			this.progressUnsubscribe = null;
+			this.progressUserId = null;
+			this.firestoreReady = false;
+			this.firestoreError = '';
+			this.authError = '';
+			this.authNotice = '';
+			this.stats = emptyProgress();
+
+			if (!user) {
+				this.authUser = null;
+				this.stats = emptyProgress();
+				this.showAuthCard = false;
+				this.authLoading = false;
+				this.syncState = 'synced';
+				return;
+			}
+
+			this.authUser = {
+				uid: user.uid,
+				email: user.email,
+				displayName: user.displayName,
+				emailVerified: user.emailVerified,
+			};
+			this.showAuthCard = true;
+
+			if (!user.emailVerified) {
+				this.authLoading = false;
+				return;
+			}
+
+			this.authLoading = true;
+			this.progressUserId = user.uid;
+			const progressRef = this.firebase.doc(this.firebase.db, 'users', user.uid, 'progress', 'current');
+			this.progressUnsubscribe = this.firebase.onSnapshot(progressRef, (snapshot) => {
+				if (generation !== this.authGeneration) return;
+				let migratedProgress = false;
+				if (snapshot.exists()) {
+					const savedStats = snapshot.data().stats;
+					if (savedStats && typeof savedStats === 'object') {
+						const migrated = migrateProgress(savedStats, this.subjects);
+						this.stats = migrated.stats;
+						migratedProgress = migrated.changed;
+					}
+				} else {
+					this.firebase.setDoc(progressRef, {
+						stats: emptyProgress(),
+						updatedAt: this.firebase.serverTimestamp(),
+					}).catch((error) => {
+						if (generation !== this.authGeneration) return;
+						this.firestoreError = `Progress could not be initialized: ${error.message}`;
+						this.syncState = 'error';
+					});
+				}
+				this.firestoreReady = true;
+				this.authLoading = false;
+				this.syncState = 'synced';
+				if (migratedProgress) this.saveProgress();
+				this.$nextTick(() => this.renderIcons());
+			}, (error) => {
+				if (generation !== this.authGeneration) return;
+				this.firestoreError = `Progress could not be loaded: ${error.message}`;
+				this.authLoading = false;
+				this.syncState = 'error';
+			});
+		},
+
+		async persistProgress(userId, generation, stats) {
+			const write = (this.progressWriteQueue || Promise.resolve()).then(async () => {
+				try {
+					const progressRef = this.firebase.doc(this.firebase.db, 'users', userId, 'progress', 'current');
+					await this.firebase.setDoc(progressRef, {
+						stats,
+						updatedAt: this.firebase.serverTimestamp(),
+					});
+					if (generation === this.authGeneration && this.authUser?.uid === userId) {
+						this.syncState = 'synced';
+						this.firestoreError = '';
+					}
+					return true;
+				} catch (error) {
+					if (generation === this.authGeneration && this.authUser?.uid === userId) {
+						this.syncState = 'error';
+						this.firestoreError = `Progress could not be saved: ${error.message}`;
+					}
+					return false;
+				}
+			});
+			this.progressWriteQueue = write;
+			return write;
+		},
+
+		setAuthMode(mode) {
+			this.authMode = mode;
+			this.authError = '';
+			this.authNotice = '';
+			this.authPassword = '';
+		},
+
+		authErrorMessage(error) {
+			const messages = {
+				'auth/account-exists-with-different-credential': 'This email already uses another sign-in method. Sign in with that method instead.',
+				'auth/email-already-in-use': 'An account with this email already exists. Sign in instead.',
+				'auth/invalid-credential': 'The email or password is incorrect.',
+				'auth/invalid-email': 'Enter a valid email address.',
+				'auth/operation-not-allowed': 'This sign-in method is not enabled in Firebase Authentication yet.',
+				'auth/popup-closed-by-user': 'The Google sign-in window was closed before completing sign-in.',
+				'auth/popup-blocked': 'Your browser blocked the Google sign-in window. Allow pop-ups and try again.',
+				'auth/unauthorized-domain': 'This website domain is not authorized in Firebase Authentication. Add it under Authentication settings.',
+				'auth/too-many-requests': 'Too many attempts. Wait a little while and try again.',
+				'auth/user-disabled': 'This account has been disabled. Contact the site administrator.',
+				'auth/weak-password': 'Choose a stronger password with at least eight characters.',
+				'auth/network-request-failed': 'A network error interrupted sign-in. Check your connection and try again.',
+			};
+			return messages[error.code] || error.message || 'Authentication failed. Please try again.';
+		},
+
+		async signIn() {
+			this.authBusy = true;
+			this.authError = '';
+			this.authNotice = '';
+			try {
+				await this.firebase.signInWithEmailAndPassword(this.firebase.auth, this.authEmail.trim(), this.authPassword);
+				this.authPassword = '';
+			} catch (error) {
+				this.authError = this.authErrorMessage(error);
+			} finally {
+				this.authBusy = false;
+			}
+		},
+
+		async signUp() {
+			this.authBusy = true;
+			this.authError = '';
+			this.authNotice = '';
+			try {
+				const credential = await this.firebase.createUserWithEmailAndPassword(this.firebase.auth, this.authEmail.trim(), this.authPassword);
+				const displayName = this.authDisplayName.trim().slice(0, 80);
+				if (displayName) await this.firebase.updateProfile(credential.user, { displayName });
+				await this.firebase.sendEmailVerification(credential.user);
+				this.authUser = {
+					uid: credential.user.uid,
+					email: credential.user.email,
+					displayName: credential.user.displayName,
+					emailVerified: credential.user.emailVerified,
+				};
+				this.authNotice = `We sent a verification link to ${credential.user.email}. Verify your email, then return here.`;
+				this.authPassword = '';
+			} catch (error) {
+				this.authError = this.authErrorMessage(error);
+			} finally {
+				this.authBusy = false;
+			}
+		},
+
+		async signInWithGoogle() {
+			this.authBusy = true;
+			this.authError = '';
+			this.authNotice = '';
+			try {
+				const provider = new this.firebase.GoogleAuthProvider();
+				provider.setCustomParameters({ prompt: 'select_account' });
+				await this.firebase.signInWithPopup(this.firebase.auth, provider);
+			} catch (error) {
+				this.authError = this.authErrorMessage(error);
+			} finally {
+				this.authBusy = false;
+			}
+		},
+
+		async sendPasswordReset() {
+			this.authBusy = true;
+			this.authError = '';
+			this.authNotice = '';
+			try {
+				await this.firebase.sendPasswordResetEmail(this.firebase.auth, this.authEmail.trim());
+				this.authNotice = 'If an account exists for that email, a password reset link has been sent.';
+			} catch (error) {
+				this.authError = this.authErrorMessage(error);
+			} finally {
+				this.authBusy = false;
+			}
+		},
+
+		async resendVerification() {
+			this.authBusy = true;
+			this.authError = '';
+			this.authNotice = '';
+			try {
+				await this.firebase.sendEmailVerification(this.firebase.auth.currentUser);
+				this.authNotice = 'A new verification link has been sent.';
+			} catch (error) {
+				this.authError = this.authErrorMessage(error);
+			} finally {
+				this.authBusy = false;
+			}
+		},
+
+		async checkEmailVerification() {
+			this.authBusy = true;
+			this.authError = '';
+			this.authNotice = '';
+			try {
+				const user = this.firebase.auth.currentUser;
+				await this.firebase.reload(user);
+				await this.handleAuthState(user);
+				if (!user.emailVerified) this.authNotice = 'Your email is not verified yet. Check your inbox for the verification link.';
+			} catch (error) {
+				this.authError = this.authErrorMessage(error);
+			} finally {
+				this.authBusy = false;
+			}
+		},
+
+		async signOut() {
+			if (this.progressSaveTimer !== null && this.authUser?.uid) {
+				window.clearTimeout(this.progressSaveTimer);
+				this.progressSaveTimer = null;
+				const saved = await this.persistProgress(
+					this.authUser.uid,
+					this.authGeneration,
+					JSON.parse(JSON.stringify(this.stats)),
+				);
+				if (!saved) {
+					this.authError = 'Your latest progress could not be synced. Check your connection and try again before signing out.';
+					return;
+				}
+			}
+			try {
+				await this.firebase.signOut(this.firebase.auth);
+				this.view = 'home';
+			} catch (error) {
+				this.authError = this.authErrorMessage(error);
+			}
+		},
+
+		retryProgressSync() {
+			this.authLoading = true;
+			this.handleAuthState(this.firebase.auth.currentUser);
+		},
+
 		get pageTitle() {
 			if (this.view === 'subject') return this.activeSubject?.name || 'Subject';
-			return ({ home: 'Overview', subjects: 'Subjects', quiz: 'Quick quiz', flashcards: 'Flashcards', progress: 'My progress' })[this.view] || 'Overview';
+			if (this.view === 'discipline') return this.activeDiscipline?.name || 'Discipline';
+			return ({ home: 'Overview', subjects: 'Disciplines', quiz: 'Quick quiz', flashcards: 'Flashcards', progress: 'My progress' })[this.view] || 'Overview';
+		},
+
+		get breadcrumbItems() {
+			const workspace = { label: 'Workspace', view: 'home' };
+			const library = { label: 'Disciplines', view: 'subjects' };
+			if (this.view === 'subject') return [
+				workspace,
+				library,
+				{ label: this.activeDiscipline?.name || 'Discipline', view: 'discipline', current: false },
+				{ label: this.activeSubject?.name || 'Subject', current: true },
+			];
+			if (this.view === 'discipline') return [
+				workspace,
+				library,
+				{ label: this.activeDiscipline?.name || 'Discipline', current: true },
+			];
+			if (this.view === 'quiz' && this.quizSubjectId) {
+				const subject = this.subjects.find((item) => item.id === this.quizSubjectId);
+				const discipline = this.disciplines.find((item) => item.id === subject?.disciplineId);
+				return [
+					workspace,
+					library,
+					{ label: discipline?.name || 'Discipline', view: 'discipline', disciplineId: discipline?.id },
+					{ label: subject?.name || 'Subject', view: 'subject', subjectId: subject?.id },
+					{ label: this.quizTopic || 'Quick quiz', current: true },
+				];
+			}
+			if (this.view === 'quiz' && this.quizDisciplineId) {
+				const discipline = this.disciplines.find((item) => item.id === this.quizDisciplineId);
+				return [
+					workspace,
+					library,
+					{ label: discipline?.name || 'Discipline', view: 'discipline', disciplineId: discipline?.id },
+					{ label: 'Quick quiz', current: true },
+				];
+			}
+			const label = ({ home: 'Overview', subjects: 'Disciplines', quiz: 'Quick quiz', flashcards: 'Flashcards', progress: 'My progress' })[this.view] || 'Overview';
+			return [workspace, { label, current: true }];
 		},
 
 		get todayLabel() {
@@ -216,10 +574,60 @@ document.addEventListener('alpine:init', () => {
 			return this.subjects.find((subject) => subject.id === this.activeSubjectId) || null;
 		},
 
+		get activeDiscipline() {
+			return this.disciplines.find((discipline) => discipline.id === this.activeDisciplineId) || null;
+		},
+
+		subjectsForDiscipline(disciplineId) {
+			return this.subjects.filter((subject) => subject.disciplineId === disciplineId);
+		},
+
+		get filteredDisciplines() {
+			const query = this.searchQuery.trim().toLowerCase();
+			if (!query) return this.disciplines;
+			return this.disciplines.filter((discipline) => {
+				const subjects = this.subjectsForDiscipline(discipline.id);
+				return `${discipline.name} ${discipline.description} ${subjects.map((subject) => `${subject.name} ${subject.description} ${subject.topics.join(' ')}`).join(' ')}`.toLowerCase().includes(query);
+			});
+		},
+
 		get filteredSubjects() {
 			const query = this.searchQuery.trim().toLowerCase();
-			if (!query) return this.subjects;
-			return this.subjects.filter((subject) => `${subject.name} ${subject.category} ${subject.description} ${subject.topics.join(' ')}`.toLowerCase().includes(query));
+			const subjects = this.activeDiscipline ? this.subjectsForDiscipline(this.activeDiscipline.id) : this.subjects;
+			if (!query) return subjects;
+			return subjects.filter((subject) => `${subject.name} ${subject.category} ${subject.description} ${subject.topics.join(' ')}`.toLowerCase().includes(query));
+		},
+
+		get searchResults() {
+			const query = this.normalizeSearchText(this.searchQuery);
+			if (query.length < 2) return [];
+			const terms = query.split(/\s+/).filter(Boolean);
+			const results = [];
+			const score = (text, title = '') => {
+				const normalized = this.normalizeSearchText(text);
+				if (!terms.every((term) => normalized.includes(term))) return 0;
+				const normalizedTitle = this.normalizeSearchText(title);
+				return terms.reduce((total, term) => total + (normalizedTitle.startsWith(term) ? 8 : normalizedTitle.includes(` ${term}`) ? 5 : normalizedTitle.includes(term) ? 3 : 1), 0);
+			};
+
+			for (const discipline of this.disciplines) {
+				const relevance = score(`${discipline.name} ${discipline.description}`, discipline.name);
+				if (relevance) results.push({ id: discipline.id, type: 'discipline', title: discipline.name, description: discipline.description, label: 'Discipline', icon: 'layers-3', relevance });
+			}
+			for (const subject of this.subjects) {
+				const discipline = this.disciplines.find((item) => item.id === subject.disciplineId);
+				const relevance = score(`${subject.name} ${subject.category} ${subject.description} ${subject.topics.join(' ')} ${discipline?.name || ''}`, subject.name);
+				if (relevance) results.push({ id: subject.id, type: 'subject', subjectId: subject.id, title: subject.name, description: `${discipline?.name || 'Learning'} · ${subject.description}`, label: 'Subject', icon: 'book-open', relevance });
+				for (const topic of subject.topics) {
+					const topicRelevance = score(`${topic} ${subject.name} ${discipline?.name || ''}`, topic);
+					if (topicRelevance) results.push({ id: `${subject.id}:${topic}`, type: 'topic', subjectId: subject.id, topic, title: topic, description: `${subject.name} · ${this.topicQuestionCount(subject.id, topic)} practice questions`, label: 'Topic', icon: 'bookmark', relevance: topicRelevance + 2 });
+				}
+				for (const [index, question] of subject.questions.entries()) {
+					const questionRelevance = score(`${question.question} ${question.explanation} ${question.options[question.answer]}`, question.question);
+					if (questionRelevance) results.push({ id: `${subject.id}:${index}`, type: 'question', subjectId: subject.id, question, title: question.question, description: `${subject.name} · ${question.topic} · ${question.difficulty}`, label: 'Question', icon: 'circle-help', relevance: questionRelevance });
+				}
+			}
+			return results.sort((left, right) => right.relevance - left.relevance || left.title.localeCompare(right.title)).slice(0, 8);
 		},
 
 		get allFlashcards() {
@@ -229,7 +637,7 @@ document.addEventListener('alpine:init', () => {
 				subjectName: subject.name,
 				topic: question.topic,
 				question: question.question,
-				answer: `${question.options[question.answer]} ${question.explanation}`,
+				explanation: question.explanation || question.options[question.answer],
 			})));
 		},
 
@@ -248,7 +656,8 @@ document.addEventListener('alpine:init', () => {
 
 		get quizSubjectLabel() {
 			const subject = this.subjects.find((item) => item.id === this.quizSubjectId);
-			return this.quizTopic || subject?.name || 'Mixed science';
+			const discipline = this.disciplines.find((item) => item.id === this.quizDisciplineId);
+			return this.quizTopic || subject?.name || discipline?.name || 'Mixed subjects';
 		},
 
 		get resultMessage() {
@@ -264,22 +673,81 @@ document.addEventListener('alpine:init', () => {
 		},
 
 		navigate(destination) {
+			if (destination === 'home' || destination === 'subjects') {
+				this.activeDisciplineId = null;
+				this.activeSubjectId = null;
+			}
 			this.view = destination;
 			this.mobileMenu = false;
+			this.accountMenuOpen = false;
 			if (destination !== 'quiz') this.quizActive = false;
 		},
 
-		searchTopics() {
-			if (!this.searchQuery.trim()) return;
-			this.view = 'subjects';
+		normalizeSearchText(value) {
+			return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+		},
+
+		clearSearch() {
+			this.searchQuery = '';
+			this.searchOpen = false;
+		},
+
+		openFirstSearchResult() {
+			const result = this.searchResults[this.searchActiveIndex];
+			if (result) this.openSearchResult(result);
+		},
+
+		moveSearchSelection(direction) {
+			const resultCount = this.searchResults.length;
+			if (!resultCount) return;
+			this.searchActiveIndex = (this.searchActiveIndex + direction + resultCount) % resultCount;
+		},
+
+		openSearchResult(result) {
+			this.searchOpen = false;
+			this.searchQuery = '';
+			if (result.type === 'discipline') {
+				this.openDiscipline(result.id);
+			} else if (result.type === 'subject') {
+				this.openSubject(result.subjectId);
+			} else if (result.type === 'topic') {
+				this.startQuiz(result.subjectId, result.topic);
+			} else if (result.type === 'question') {
+				this.startQuiz(result.subjectId, result.question.topic, null, null, result.question.question);
+			}
+		},
+
+		openDiscipline(disciplineId) {
+			this.activeDisciplineId = disciplineId;
+			this.activeSubjectId = null;
+			this.view = 'discipline';
 			this.mobileMenu = false;
+			this.accountMenuOpen = false;
+			this.searchQuery = '';
 		},
 
 		openSubject(subjectId) {
 			this.activeSubjectId = subjectId;
+			this.activeDisciplineId = this.subjects.find((subject) => subject.id === subjectId)?.disciplineId || null;
 			this.view = 'subject';
 			this.mobileMenu = false;
 			this.searchQuery = '';
+		},
+
+		visitBreadcrumb(item) {
+			if (item.subjectId) {
+				this.openSubject(item.subjectId);
+				return;
+			}
+			if (item.disciplineId) {
+				this.openDiscipline(item.disciplineId);
+				return;
+			}
+			if (item.view === 'discipline' && this.activeDisciplineId) {
+				this.openDiscipline(this.activeDisciplineId);
+				return;
+			}
+			this.navigate(item.view);
 		},
 
 		subjectProgress(subjectId) {
@@ -294,6 +762,19 @@ document.addEventListener('alpine:init', () => {
 			return this.stats.completedTopics.includes(`${subjectId}:${topic}`);
 		},
 
+		topicQuestions(subjectId, topic) {
+			const subject = this.subjects.find((item) => item.id === subjectId);
+			return subject?.questions.filter((question) => question.topic === topic) || [];
+		},
+
+		topicQuestionCount(subjectId, topic) {
+			return this.topicQuestions(subjectId, topic).length;
+		},
+
+		topicDifficultyCount(subjectId, topic, difficulty) {
+			return this.topicQuestions(subjectId, topic).filter((question) => question.difficulty === difficulty).length;
+		},
+
 		recordStudySession() {
 			const today = new Date().toISOString().slice(0, 10);
 			if (this.stats.lastStudyDate !== today) {
@@ -304,13 +785,21 @@ document.addEventListener('alpine:init', () => {
 			this.saveProgress();
 		},
 
-		startQuiz(subjectId = null, topic = null) {
+		startQuiz(subjectId = null, topic = null, disciplineId = null, difficulty = null, exactQuestion = null) {
 			this.quizSubjectId = subjectId || null;
+			this.quizDisciplineId = disciplineId || null;
 			this.quizTopic = topic || null;
-			this.selectedQuizSubject = subjectId || 'all';
+			this.selectedQuizSubject = subjectId || (disciplineId ? `discipline:${disciplineId}` : 'all');
 			let pool = this.subjects.flatMap((subject) => subject.questions.map((question) => ({ ...question, subjectId: subject.id, subjectName: subject.name })));
 			if (subjectId) pool = pool.filter((question) => question.subjectId === subjectId);
+			else if (disciplineId) pool = pool.filter((question) => this.subjects.find((subject) => subject.id === question.subjectId)?.disciplineId === disciplineId);
 			if (topic) pool = pool.filter((question) => question.topic === topic);
+			if (difficulty) pool = pool.filter((question) => question.difficulty === difficulty);
+			if (exactQuestion) pool = pool.filter((question) => question.question === exactQuestion);
+			if (!pool.length) {
+				this.authError = 'There are no questions available for that selection yet.';
+				return;
+			}
 			this.quizQuestions = pool.sort(() => Math.random() - 0.5).slice(0, 10);
 			this.questionIndex = 0;
 			this.selectedAnswer = null;
@@ -319,7 +808,16 @@ document.addEventListener('alpine:init', () => {
 			this.quizActive = true;
 			this.view = 'quiz';
 			this.mobileMenu = false;
+			this.searchOpen = false;
 			this.recordStudySession();
+		},
+
+		startSelectedQuiz() {
+			if (this.selectedQuizSubject.startsWith('discipline:')) {
+				this.startQuiz(null, null, this.selectedQuizSubject.slice('discipline:'.length));
+				return;
+			}
+			this.startQuiz(this.selectedQuizSubject === 'all' ? null : this.selectedQuizSubject);
 		},
 
 		answerQuestion(index) {
@@ -385,6 +883,64 @@ document.addEventListener('alpine:init', () => {
 			this.flashFlipped = false;
 		},
 
+		toggleFlashcard() {
+			this.flashFlipped = !this.flashFlipped;
+			this.playFlashcardFlipSound();
+		},
+
+		getAudioContext() {
+			if (!window.AudioContext) return null;
+			if (!this.audioContext) this.audioContext = new window.AudioContext();
+			if (this.audioContext.state === 'suspended') this.audioContext.resume();
+			return this.audioContext;
+		},
+
+		playButtonSound() {
+			const context = this.getAudioContext();
+			if (!context) return;
+
+			const oscillator = context.createOscillator();
+			const gain = context.createGain();
+			const now = context.currentTime;
+			oscillator.type = 'sine';
+			oscillator.frequency.setValueAtTime(780, now);
+			gain.gain.setValueAtTime(0.0001, now);
+			gain.gain.exponentialRampToValueAtTime(0.018, now + 0.004);
+			gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
+			oscillator.connect(gain);
+			gain.connect(context.destination);
+			oscillator.start(now);
+			oscillator.stop(now + 0.045);
+		},
+
+		playFlashcardFlipSound() {
+			const context = this.getAudioContext();
+			if (!context) return;
+
+			const duration = 0.12;
+			const buffer = context.createBuffer(1, Math.ceil(context.sampleRate * duration), context.sampleRate);
+			const samples = buffer.getChannelData(0);
+			for (let index = 0; index < samples.length; index += 1) {
+				samples[index] = (Math.random() * 2 - 1) * (1 - index / samples.length);
+			}
+
+			const source = context.createBufferSource();
+			const filter = context.createBiquadFilter();
+			const gain = context.createGain();
+			const now = context.currentTime;
+			source.buffer = buffer;
+			filter.type = 'lowpass';
+			filter.frequency.setValueAtTime(1800, now);
+			gain.gain.setValueAtTime(0.0001, now);
+			gain.gain.exponentialRampToValueAtTime(0.035, now + 0.015);
+			gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+			source.connect(filter);
+			filter.connect(gain);
+			gain.connect(context.destination);
+			source.start(now);
+			source.stop(now + duration);
+		},
+
 		markFlashcard(confidence) {
 			const card = this.currentFlashcard;
 			if (confidence === 'known' && card && !this.stats.knownCards.includes(card.id)) this.stats.knownCards.push(card.id);
@@ -393,11 +949,46 @@ document.addEventListener('alpine:init', () => {
 			this.flashFlipped = false;
 		},
 
-		resetProgress() {
-			if (!window.confirm('Reset all saved quiz, streak, and flashcard progress? This cannot be undone.')) return;
+		async resetProgress() {
+			if (!window.confirm('Reset progress saved to this account across all devices? Quiz results, completed topics, flashcards, and streak data will be cleared. Your Firebase account will remain active.')) return;
+			window.clearTimeout(this.progressSaveTimer);
+			this.progressSaveTimer = null;
 			this.stats = emptyProgress();
-			this.saveProgress();
 			this.flashIndex = 0;
+			this.flashFlipped = false;
+			this.accountMenuOpen = false;
+			if (!this.isAuthenticated || !this.firebase) return;
+			this.syncState = 'syncing';
+			await this.persistProgress(this.authUser.uid, this.authGeneration, JSON.parse(JSON.stringify(this.stats)));
+		},
+
+		applyTheme() {
+			document.documentElement.dataset.theme = this.theme;
+			const resolvedTheme = this.theme === 'system'
+				? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+				: this.theme;
+			document.documentElement.dataset.resolvedTheme = resolvedTheme;
+			const themeColor = document.querySelector('meta[name="theme-color"]');
+			if (themeColor) themeColor.content = resolvedTheme === 'dark' ? '#151c18' : '#f6f5ef';
+		},
+
+		setTheme(theme) {
+			if (!['light', 'dark', 'system'].includes(theme)) return;
+			this.theme = theme;
+			this.applyTheme();
+			this.themeError = '';
+			try {
+				window.localStorage.setItem('rezi-theme', theme);
+			} catch (error) {
+				this.themeError = `Theme preference could not be saved: ${error.message}`;
+			}
+		},
+
+		openAuth(mode) {
+			this.authMode = mode;
+			this.showAuthCard = true;
+			this.authError = '';
+			this.authNotice = '';
 		},
 	}));
 });

@@ -1,0 +1,54 @@
+rules_version = '2';
+
+service cloud.firestore {
+	match /databases/{database}/documents {
+		function isVerifiedOwner(userId) {
+			return request.auth != null
+				&& request.auth.uid == userId
+				&& request.auth.token.email_verified == true;
+		}
+
+		match /users/{userId}/progress/{progressId} {
+			allow read: if isVerifiedOwner(userId)
+				&& progressId == 'current';
+
+			allow create, update: if isVerifiedOwner(userId)
+				&& progressId == 'current'
+				&& request.resource.data.keys().hasOnly(['stats', 'updatedAt'])
+				&& request.resource.data.keys().hasAll(['stats', 'updatedAt'])
+				&& request.resource.data.updatedAt is timestamp
+				&& request.resource.data.stats is map
+				&& request.resource.data.stats.keys().hasAll([
+					'answered',
+					'correct',
+					'bySubject',
+					'completedTopics',
+					'knownCards',
+					'streak',
+					'lastStudyDate'
+				])
+				&& request.resource.data.stats.keys().hasOnly([
+					'answered',
+					'correct',
+					'bySubject',
+					'completedTopics',
+					'knownCards',
+					'streak',
+					'lastStudyDate'
+				])
+				&& request.resource.data.stats.answered is int
+				&& request.resource.data.stats.correct is int
+				&& request.resource.data.stats.bySubject is map
+				&& request.resource.data.stats.completedTopics is list
+				&& request.resource.data.stats.completedTopics.size() <= 100
+				&& request.resource.data.stats.knownCards is list
+				&& request.resource.data.stats.knownCards.size() <= 2000
+				&& request.resource.data.stats.streak is int
+				&& (
+					request.resource.data.stats.lastStudyDate == null
+					|| request.resource.data.stats.lastStudyDate is string
+				);
+
+		}
+	}
+}
