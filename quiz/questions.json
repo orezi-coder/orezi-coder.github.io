@@ -8187,6 +8187,786 @@
 					],
 					"answer": 1,
 					"explanation": "The correct pairing is Leo Tolstoy - War and Peace."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "easy",
+					"question": "African Literature: What does a proverb commonly contribute to an oral story?",
+					"options": [
+						"A concise expression of shared wisdom",
+						"A list of stage directions",
+						"A record of page numbers",
+						"A map of the setting"
+					],
+					"answer": 0,
+					"explanation": "A proverb condenses communal knowledge into a memorable saying."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "easy",
+					"question": "African Literature: The people and village of Umuofia are central to which novel?",
+					"options": [
+						"Things Fall Apart",
+						"The Famished Road",
+						"So Long a Letter",
+						"Nervous Conditions"
+					],
+					"answer": 0,
+					"explanation": "Chinua Achebe places Okonkwo and his community in Umuofia in Things Fall Apart."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "easy",
+					"question": "African Literature: So Long a Letter is presented largely as what kind of writing?",
+					"options": [
+						"A letter written to a friend",
+						"A court transcript",
+						"A collection of stage cues",
+						"A travel guide"
+					],
+					"answer": 0,
+					"explanation": "Mariama Ba uses a long letter from Ramatoulaye to her friend as the novel?s frame."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "easy",
+					"question": "African Literature: Who tells much of the story in Nervous Conditions?",
+					"options": [
+						"Tambu",
+						"Okonkwo",
+						"Azaro",
+						"Elesin"
+					],
+					"answer": 0,
+					"explanation": "Tambu narrates Nervous Conditions, recounting her education and family life."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "easy",
+					"question": "African Literature: What is the name of the spirit-child narrator in The Famished Road?",
+					"options": [
+						"Azaro",
+						"Waiyaki",
+						"Mugo",
+						"Obi"
+					],
+					"answer": 0,
+					"explanation": "Ben Okri?s The Famished Road is narrated by Azaro, a spirit child."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "easy",
+					"question": "African Literature: The railway workers? strike is central to which novel?",
+					"options": [
+						"God?s Bits of Wood",
+						"The River Between",
+						"A Question of Power",
+						"The Concubine"
+					],
+					"answer": 0,
+					"explanation": "Ousmane Sembene?s God?s Bits of Wood depicts a railway strike and its effects on workers and their communities."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "easy",
+					"question": "African Literature: In many West African traditions, what is a griot known for doing?",
+					"options": [
+						"Preserving and performing oral histories",
+						"Designing railway engines",
+						"Recording weather forecasts",
+						"Directing court trials"
+					],
+					"answer": 0,
+					"explanation": "A griot is a hereditary oral historian, storyteller, or praise singer in several West African traditions."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "easy",
+					"question": "African Literature: Which is a common form of traditional African oral literature?",
+					"options": [
+						"A folktale told to an audience",
+						"A printed index without a story",
+						"A laboratory report",
+						"A stage blueprint"
+					],
+					"answer": 0,
+					"explanation": "Folktales are a widespread oral form, often shared through live storytelling."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "easy",
+					"question": "African Literature: Which historical experience appears in many African novels of the twentieth century?",
+					"options": [
+						"Colonial rule and its consequences",
+						"The invention of the printing press in Europe",
+						"The Roman conquest of Britain",
+						"The building of the Great Wall"
+					],
+					"answer": 0,
+					"explanation": "Many modern African novels examine colonial rule, resistance, independence, and their lasting effects."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "easy",
+					"question": "African Literature: Which country is the setting for much of Things Fall Apart?",
+					"options": [
+						"Nigeria",
+						"Senegal",
+						"Kenya",
+						"Zimbabwe"
+					],
+					"answer": 0,
+					"explanation": "Things Fall Apart is set in Igbo communities in what is now southeastern Nigeria."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "medium",
+					"question": "African Literature: How do proverbs function in Things Fall Apart?",
+					"options": [
+						"They connect everyday speech with Igbo values and knowledge",
+						"They replace every event in the plot",
+						"They identify the narrator as a European traveler",
+						"They provide stage directions for actors"
+					],
+					"answer": 0,
+					"explanation": "Achebe uses proverbs to give dialogue cultural texture and express shared Igbo knowledge."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "medium",
+					"question": "African Literature: Which ritual obligation drives the central conflict of Death and the King?s Horseman?",
+					"options": [
+						"Elesin?s duty following the king?s death",
+						"Waiyaki?s return from school",
+						"Azaro?s search for his family",
+						"Mugo?s election campaign"
+					],
+					"answer": 0,
+					"explanation": "Elesin is expected to carry out a ritual duty after the king dies; colonial interference complicates the event."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "medium",
+					"question": "African Literature: A Grain of Wheat is closely associated with which historical transition?",
+					"options": [
+						"Kenya?s move toward independence",
+						"The founding of the Mali Empire",
+						"The end of apartheid in South Africa",
+						"The start of the railway strike in Senegal"
+					],
+					"answer": 0,
+					"explanation": "Ngugi wa Thiong?o?s novel is set around Kenya?s independence and explores the struggle and its memories."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "medium",
+					"question": "African Literature: In So Long a Letter, to whom does Ramatoulaye address her letter?",
+					"options": [
+						"Her friend Aissatou",
+						"Her teacher Tambu",
+						"Her brother Okonkwo",
+						"The spirit child Azaro"
+					],
+					"answer": 0,
+					"explanation": "Ramatoulaye writes to her friend Aissatou, reflecting on marriage, grief, and social change."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "medium",
+					"question": "African Literature: In Season of Migration to the North, where has the unnamed narrator been studying before he returns home?",
+					"options": [
+						"England",
+						"Brazil",
+						"Japan",
+						"Canada"
+					],
+					"answer": 0,
+					"explanation": "Tayeb Salih?s narrator returns to his Sudanese village after years of study in England."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "medium",
+					"question": "African Literature: What tension shapes the community in Ngugi wa Thiong?o?s The River Between?",
+					"options": [
+						"Christian mission influence and established Gikuyu customs",
+						"A railway strike and factory closures",
+						"A royal succession in ancient Egypt",
+						"A dispute between rival theater companies"
+					],
+					"answer": 0,
+					"explanation": "The River Between explores conflict between Christian missions and Gikuyu traditions in a divided community."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "medium",
+					"question": "African Literature: The Beautyful Ones Are Not Yet Born is often read as a critique of what?",
+					"options": [
+						"Corruption and disillusionment after independence",
+						"The dangers of sea travel in antiquity",
+						"The rules of courtly romance",
+						"The decline of medieval chivalry"
+					],
+					"answer": 0,
+					"explanation": "Ayi Kwei Armah?s novel portrays corruption and disappointment in post-independence Ghana."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "medium",
+					"question": "African Literature: What does Tambu?s pursuit of schooling in Nervous Conditions bring into focus?",
+					"options": [
+						"How gender and economic privilege shape educational opportunity",
+						"How a railway company organizes a strike",
+						"How a king?s horseman inherits a title",
+						"How a spirit child enters the afterlife"
+					],
+					"answer": 0,
+					"explanation": "Tambu?s experiences show how gender and class affect access to education in colonial Rhodesia."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "medium",
+					"question": "African Literature: Which feature helps The Famished Road blend everyday life with the supernatural?",
+					"options": [
+						"Azaro?s perspective as a spirit child",
+						"A narrator who lists historical dates only",
+						"A plot told entirely through legal documents",
+						"A chorus that never speaks to characters"
+					],
+					"answer": 0,
+					"explanation": "Azaro?s identity as an abiku, or spirit child, lets the novel move between physical and spiritual worlds."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "medium",
+					"question": "African Literature: What role do women play in God?s Bits of Wood during the strike?",
+					"options": [
+						"They organize and sustain collective resistance",
+						"They remain outside every community decision",
+						"They serve only as anonymous narrators",
+						"They negotiate a royal succession"
+					],
+					"answer": 0,
+					"explanation": "Women take an active role in organizing and sustaining the railway workers? strike."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "hard",
+					"question": "African Literature: Why is the title Nervous Conditions significant?",
+					"options": [
+						"It links personal distress to the psychological effects of colonial rule",
+						"It names a medical diagnosis shared by every character",
+						"It refers to the railway schedule in the novel",
+						"It describes the weather during Tambu?s childhood"
+					],
+					"answer": 0,
+					"explanation": "The title echoes a description of colonialism?s psychological effects and frames Tambu?s experiences within that wider pressure."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "hard",
+					"question": "African Literature: What effect does the letter form create in So Long a Letter?",
+					"options": [
+						"It makes social change and private reflection unfold in Ramatoulaye?s own voice",
+						"It turns the novel into an objective government report",
+						"It prevents the narrator from describing personal events",
+						"It makes every chapter a separate stage scene"
+					],
+					"answer": 0,
+					"explanation": "The epistolary form gives Ramatoulaye space to connect intimate memories with broader social questions."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "hard",
+					"question": "African Literature: How does Season of Migration to the North challenge familiar colonial narratives?",
+					"options": [
+						"It reverses the direction of travel and examines the consequences of colonial power",
+						"It presents Europe as the novel?s only setting",
+						"It removes all references to cultural identity",
+						"It retells an ancient Greek war without change"
+					],
+					"answer": 0,
+					"explanation": "The return from England to Sudan unsettles the conventional journey from colonized land to Europe and probes its unequal history."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "hard",
+					"question": "African Literature: What makes the narration of A Grain of Wheat especially suited to examining collective memory?",
+					"options": [
+						"Multiple perspectives reveal competing memories of the independence struggle",
+						"A single diary records each event in exact chronological order",
+						"The narrator refuses to mention the past",
+						"The story is told only through a stage manager?s notes"
+					],
+					"answer": 0,
+					"explanation": "Shifting perspectives let the novel explore how different people remember and interpret the struggle for independence."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "hard",
+					"question": "African Literature: What does Waiyaki?s position in The River Between chiefly represent?",
+					"options": [
+						"An attempt to bridge communities divided by cultural and religious change",
+						"A campaign to restore an ancient Egyptian dynasty",
+						"A railway company?s effort to end a labor strike",
+						"A spirit child?s choice between two worlds"
+					],
+					"answer": 0,
+					"explanation": "Waiyaki seeks unity, but the divisions between mission influence and Gikuyu customs constrain his leadership."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "hard",
+					"question": "African Literature: Which reading best explains the colonial officer?s intervention in Death and the King?s Horseman?",
+					"options": [
+						"It exposes a clash of worldviews and the colonial power to disrupt local obligations",
+						"It proves that the ritual has no meaning to the community",
+						"It shows that Elesin is secretly the colonial ruler",
+						"It turns the play into a comedy about mistaken identities"
+					],
+					"answer": 0,
+					"explanation": "The intervention reflects colonial authority and a failure to understand the ritual?s meaning within Yoruba society."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "hard",
+					"question": "African Literature: Why can a performance-based oral story have versions that differ across tellings?",
+					"options": [
+						"The storyteller adapts wording and emphasis to the audience and occasion",
+						"Oral stories must follow a single printed edition",
+						"Audiences are never present during oral performance",
+						"Every version is translated from a legal code"
+					],
+					"answer": 0,
+					"explanation": "Oral performance is shaped by the storyteller, audience, and occasion, so details may vary while core elements endure."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "hard",
+					"question": "African Literature: How does Okonkwo?s personal fear shape the tragedy of Things Fall Apart?",
+					"options": [
+						"His fear of appearing weak contributes to rigid choices and conflict",
+						"His desire to become a railway worker drives the plot",
+						"His search for European schooling resolves every dispute",
+						"His role as a griot keeps the community united"
+					],
+					"answer": 0,
+					"explanation": "Okonkwo?s fear of weakness helps drive inflexible actions that intensify his conflicts with family and society."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "hard",
+					"question": "African Literature: Which technique most clearly gives The Famished Road its shifting spiritual and material reality?",
+					"options": [
+						"A first-person narrator whose identity crosses human and spirit worlds",
+						"A detached narrator who reports only public statistics",
+						"A series of letters written by a colonial governor",
+						"A chorus that explains every event before it happens"
+					],
+					"answer": 0,
+					"explanation": "Azaro?s first-person viewpoint crosses the boundary between human life and the spirit world."
+				},
+				{
+					"topic": "African Literature",
+					"difficulty": "hard",
+					"question": "African Literature: What does the strike in God?s Bits of Wood allow the novel to examine beyond wages?",
+					"options": [
+						"Solidarity, gender roles, and the costs of collective resistance",
+						"The rules of succession in a royal court",
+						"The education of a single colonial administrator",
+						"The conventions of a medieval quest"
+					],
+					"answer": 0,
+					"explanation": "The strike becomes a lens for examining community solidarity, women?s leadership, and the broader costs of resistance."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "easy",
+					"question": "Foreign Literature: Who is the central young woman in Pride and Prejudice?",
+					"options": [
+						"Elizabeth Bennet",
+						"Jo March",
+						"Jane Eyre",
+						"Emma Woodhouse"
+					],
+					"answer": 0,
+					"explanation": "Elizabeth Bennet is the principal character and much of the novel follows her perspective."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "easy",
+					"question": "Foreign Literature: Who narrates The Great Gatsby?",
+					"options": [
+						"Nick Carraway",
+						"Jay Gatsby",
+						"Tom Buchanan",
+						"George Wilson"
+					],
+					"answer": 0,
+					"explanation": "Nick Carraway narrates the novel and recounts his observations of Gatsby."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "easy",
+					"question": "Foreign Literature: Who is the Greek hero trying to return home in The Odyssey?",
+					"options": [
+						"Odysseus",
+						"Achilles",
+						"Hector",
+						"Aeneas"
+					],
+					"answer": 0,
+					"explanation": "The Odyssey follows Odysseus?s long journey home to Ithaca."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "easy",
+					"question": "Foreign Literature: The Tale of Genji is traditionally attributed to whom?",
+					"options": [
+						"Murasaki Shikibu",
+						"Sei Shonagon",
+						"Li Bai",
+						"Du Fu"
+					],
+					"answer": 0,
+					"explanation": "The Tale of Genji is attributed to the Japanese court writer Murasaki Shikibu."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "easy",
+					"question": "Foreign Literature: Who wrote The Divine Comedy?",
+					"options": [
+						"Dante Alighieri",
+						"Geoffrey Chaucer",
+						"John Milton",
+						"Virgil"
+					],
+					"answer": 0,
+					"explanation": "Dante Alighieri wrote The Divine Comedy, an epic poem in three parts."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "easy",
+					"question": "Foreign Literature: What is Gregor Samsa?s striking change at the beginning of The Metamorphosis?",
+					"options": [
+						"He awakens transformed into a large insect-like creature",
+						"He discovers he has become a king",
+						"He wakes aboard a ship bound for Ithaca",
+						"He is appointed as a town judge"
+					],
+					"answer": 0,
+					"explanation": "Kafka?s story opens with Gregor discovering that he has undergone a grotesque transformation."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "easy",
+					"question": "Foreign Literature: Who is the young traveler at the center of The Little Prince?",
+					"options": [
+						"A prince from a small asteroid",
+						"A railway worker in Senegal",
+						"A detective in Victorian London",
+						"A soldier returning from Troy"
+					],
+					"answer": 0,
+					"explanation": "The Little Prince follows a young prince who travels from his small asteroid and meets a pilot."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "easy",
+					"question": "Foreign Literature: Who tells the story of The Kite Runner?",
+					"options": [
+						"Amir",
+						"Hassan",
+						"Baba",
+						"Rahim Khan"
+					],
+					"answer": 0,
+					"explanation": "Amir narrates The Kite Runner and reflects on events from his childhood and adulthood."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "easy",
+					"question": "Foreign Literature: Who is the narrator of Midnight?s Children?",
+					"options": [
+						"Saleem Sinai",
+						"Mowgli",
+						"Jean Valjean",
+						"Gregor Samsa"
+					],
+					"answer": 0,
+					"explanation": "Saleem Sinai narrates Midnight?s Children and connects his life with India?s history."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "easy",
+					"question": "Foreign Literature: Which character is the former convict at the center of Les Mis?rables?",
+					"options": [
+						"Jean Valjean",
+						"Edmond Dant?s",
+						"Captain Ahab",
+						"Raskolnikov"
+					],
+					"answer": 0,
+					"explanation": "Jean Valjean is the central character whose life is shaped by imprisonment and attempts at redemption."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "medium",
+					"question": "Foreign Literature: What does Don Quixote mainly satirize through its hero?s adventures?",
+					"options": [
+						"The conventions of chivalric romances",
+						"The structure of Greek tragedy",
+						"The rules of modern detective fiction",
+						"The traditions of Japanese court poetry"
+					],
+					"answer": 0,
+					"explanation": "Cervantes uses Don Quixote?s misread adventures to satirize the idealized conventions of chivalric romances."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "medium",
+					"question": "Foreign Literature: Which social concern is central to Pride and Prejudice?",
+					"options": [
+						"Marriage, class, and women?s limited economic choices",
+						"The laws governing a medieval monastery",
+						"The duties of a Greek warrior at sea",
+						"The politics of a postcolonial railway strike"
+					],
+					"answer": 0,
+					"explanation": "Austen examines courtship and marriage in a society where class and women?s financial prospects matter greatly."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "medium",
+					"question": "Foreign Literature: What does Gatsby?s reinvention of himself most strongly connect to?",
+					"options": [
+						"The pursuit and limits of the American Dream",
+						"The return of a Greek king from war",
+						"The duties of a Japanese court poet",
+						"The struggle to lead a railway strike"
+					],
+					"answer": 0,
+					"explanation": "Gatsby?s self-invention and longing for wealth and status expose both the appeal and limits of the American Dream."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "medium",
+					"question": "Foreign Literature: Which recurring pattern helps structure The Odyssey?",
+					"options": [
+						"A difficult homeward journey marked by trials and recognition",
+						"A courtroom investigation told by several witnesses",
+						"A family saga set entirely in one city",
+						"A sequence of letters about a railway strike"
+					],
+					"answer": 0,
+					"explanation": "The Odyssey is structured around Odysseus?s return journey, with trials and eventual recognition at home."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "medium",
+					"question": "Foreign Literature: What drives much of Raskolnikov?s inner conflict in Crime and Punishment?",
+					"options": [
+						"Guilt and the consequences of his theory about extraordinary individuals",
+						"Fear that he will never return to Ithaca",
+						"A dispute over inheritance at an English estate",
+						"A struggle to write a letter to a childhood friend"
+					],
+					"answer": 0,
+					"explanation": "Dostoevsky explores Raskolnikov?s guilt and moral turmoil after he tests his ideas through a crime."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "medium",
+					"question": "Foreign Literature: What world does The Tale of Genji chiefly portray?",
+					"options": [
+						"The relationships and aesthetic life of Japan?s Heian court",
+						"The campaigns of Napoleon across Russia",
+						"The life of railway workers in Senegal",
+						"The streets of postwar Kabul"
+					],
+					"answer": 0,
+					"explanation": "The Tale of Genji portrays relationships, status, and aesthetic culture among Japan?s Heian court."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "medium",
+					"question": "Foreign Literature: Gregor?s transformation in The Metamorphosis most directly intensifies which experience?",
+					"options": [
+						"Alienation from family and ordinary social life",
+						"A desire to return from the Trojan War",
+						"A plan to become a court poet",
+						"A campaign for national independence"
+					],
+					"answer": 0,
+					"explanation": "Gregor?s transformation makes his isolation and family?s changing treatment of him more stark."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "medium",
+					"question": "Foreign Literature: What moral contrast is important in Les Mis?rables?",
+					"options": [
+						"Strict punishment contrasted with mercy and compassion",
+						"Courtly romance contrasted with epic simile",
+						"A narrator?s memory contrasted with oral performance",
+						"A spirit child?s beliefs contrasted with a railway strike"
+					],
+					"answer": 0,
+					"explanation": "The novel contrasts rigid punishment with acts of mercy and the possibility of moral change."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "medium",
+					"question": "Foreign Literature: How does The House of the Spirits combine family history with national history?",
+					"options": [
+						"It follows generations whose lives intersect with political upheaval",
+						"It recounts a single voyage with no social setting",
+						"It presents a series of unrelated courtroom cases",
+						"It focuses only on the rules of courtly romance"
+					],
+					"answer": 0,
+					"explanation": "Allende?s family saga connects private lives across generations with major political changes in Chile."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "medium",
+					"question": "Foreign Literature: What emotional arc shapes Amir?s story in The Kite Runner?",
+					"options": [
+						"Guilt followed by an effort at atonement",
+						"Pride followed by a quest for a throne",
+						"Jealousy followed by a journey to Ithaca",
+						"Fear followed by a career as a court poet"
+					],
+					"answer": 0,
+					"explanation": "Amir?s later actions are shaped by guilt and a search for a chance to atone."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "hard",
+					"question": "Foreign Literature: How does Austen?s use of free indirect discourse shape Pride and Prejudice?",
+					"options": [
+						"It blends third-person narration with Elizabeth?s judgments and assumptions",
+						"It makes every event appear in an official letter",
+						"It removes access to characters? thoughts",
+						"It gives the novel a chorus that speaks for the audience"
+					],
+					"answer": 0,
+					"explanation": "Free indirect discourse lets the narration move close to Elizabeth?s thoughts without switching fully to first person."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "hard",
+					"question": "Foreign Literature: Why is Nick Carraway?s narration in The Great Gatsby not fully objective?",
+					"options": [
+						"His judgments and selective memories shape how readers see Gatsby",
+						"He is absent from every event he describes",
+						"He narrates through letters written by Gatsby",
+						"He knows and reports every character?s private thoughts"
+					],
+					"answer": 0,
+					"explanation": "Nick?s values, judgments, and selection of details influence the account, so readers must consider his perspective."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "hard",
+					"question": "Foreign Literature: What does Dante?s journey through the afterlife in The Divine Comedy also represent?",
+					"options": [
+						"A moral and spiritual journey toward understanding",
+						"A literal attempt to reclaim a throne",
+						"A satire of railway labor negotiations",
+						"A search for a lost letter in a family archive"
+					],
+					"answer": 0,
+					"explanation": "The journey works allegorically as a movement from error toward moral and spiritual understanding."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "hard",
+					"question": "Foreign Literature: What narrative device adds layers to Don Quixote?s claim to historical truth?",
+					"options": [
+						"The fictional chronicler Cide Hamete Benengeli",
+						"The eyewitness account of Nick Carraway",
+						"A set of letters from Ramatoulaye",
+						"The stage directions of Elesin"
+					],
+					"answer": 0,
+					"explanation": "Cervantes frames parts of the story as a translation of a chronicle by the fictional Cide Hamete Benengeli."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "hard",
+					"question": "Foreign Literature: How does War and Peace complicate the role of great leaders in history?",
+					"options": [
+						"It places individual decisions within forces larger than any one leader",
+						"It argues that historical events have no effect on ordinary people",
+						"It tells the story only through a king?s private letters",
+						"It treats every battle as a simple contest between two heroes"
+					],
+					"answer": 0,
+					"explanation": "Tolstoy contrasts the influence of individuals with the vast social forces shaping historical events."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "hard",
+					"question": "Foreign Literature: What is a key effect of Kafka?s unexplained transformation in The Metamorphosis?",
+					"options": [
+						"It makes alienation feel absurd and ordinary at the same time",
+						"It provides a scientific explanation for every event",
+						"It turns the story into a conventional heroic quest",
+						"It confirms that Gregor is an unreliable historian"
+					],
+					"answer": 0,
+					"explanation": "The matter-of-fact treatment of an impossible event creates an unsettling blend of the absurd and the ordinary."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "hard",
+					"question": "Foreign Literature: How does Meursault?s narrative voice shape The Stranger?",
+					"options": [
+						"Its restrained style complicates readers? judgments of emotion and morality",
+						"It explains every character?s motives in detail",
+						"It shifts between dozens of narrators",
+						"It presents events as a sequence of stage directions"
+					],
+					"answer": 0,
+					"explanation": "Meursault?s emotionally restrained first-person narration leaves readers to confront their expectations about feeling and morality."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "hard",
+					"question": "Foreign Literature: What effect does the repeated Buend?a family history create in One Hundred Years of Solitude?",
+					"options": [
+						"It suggests that personal and political patterns recur across generations",
+						"It presents history as a straight line with no repetition",
+						"It confines the novel to a single courtroom",
+						"It separates family life from the history of the town"
+					],
+					"answer": 0,
+					"explanation": "Recurring names and events give the family saga a cyclical sense of history."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "hard",
+					"question": "Foreign Literature: What does the changing status of Genji reveal about court life in The Tale of Genji?",
+					"options": [
+						"Personal relationships and rank are closely linked to political fortune",
+						"Court rank is fixed and never affects relationships",
+						"The novel rejects all attention to aesthetics",
+						"The central conflict is a railway strike"
+					],
+					"answer": 0,
+					"explanation": "Genji?s relationships and changing fortunes show how intimacy, status, and court politics intersect."
+				},
+				{
+					"topic": "Foreign Literature",
+					"difficulty": "hard",
+					"question": "Foreign Literature: Which feature of The Odyssey reflects its roots in oral epic tradition?",
+					"options": [
+						"Repeated epithets and formulaic phrases that aid performance and recall",
+						"A single modern diary written after the events",
+						"Footnotes that cite a fictional historian",
+						"A sequence of letters exchanged by two sisters"
+					],
+					"answer": 0,
+					"explanation": "Formulaic phrases and epithets are characteristic of oral epic composition and performance."
 				}
 			]
 		},

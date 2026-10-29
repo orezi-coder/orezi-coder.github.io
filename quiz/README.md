@@ -42,10 +42,11 @@ account, to avoid mixing data between people who may share a device.
 
 The question bank is in `questions.json`; the app imports this file directly.
 It is organized into three disciplines: Art, Science, and Commercial. The
-current bank contains 11 subjects and 1,110 questions. Art includes Visual Arts,
-Literature, and Music; every Arts topic has 60 questions split evenly into 20
-easy, 20 medium, and 20 hard questions. Literature includes African Literature
-and Foreign Literature alongside its other topics. Each Science subject has 30 questions.
+current bank contains 11 subjects and 1,170 questions. Art includes Visual Arts,
+Literature, and Music. Most Arts topics have 60 questions split evenly into 20
+easy, 20 medium, and 20 hard questions; African Literature and Foreign Literature
+each have 90 questions split evenly into 30 per difficulty. Each Science subject
+has 30 questions.
 Commercial includes Business Studies, Accounting, Economics, and Government.
 The glossary contains contextual excerpts that expand on key terms rather than
 repeat answer choices.
